@@ -1,0 +1,273 @@
+.dashboard{ 
+    display: absolute;
+    flex-direction: row;
+}
+
+.content-center{
+    flex: 1;
+    height: 100%;
+}
+
+.title-heading{
+    margin-top: 50px;
+    margin-left: 320px;
+    color: #FF7506;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 45px;
+}
+
+.title-content-right p {
+    margin-top: 50px;
+    color: #FF7506;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 45px;
+}
+
+.top{
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.top p{
+    margin-top: 10px;
+    margin-left: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.stats{
+    display: flex;
+    margin-left: 315px;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    height: 128px;
+    
+}
+
+
+.item-stats{  
+    width: 235px;
+    height: 130px;
+    left: 0px;
+    top: 0px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.icon-stats{
+    margin-top: 0px;
+    display: flex;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+}
+
+.icon-stats p {
+    width: 85px;
+    height: 36px;
+    padding-left: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: #535261;
+}
+
+.value-stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 12px;
+}
+
+.number {
+    width: 108px;
+    height: 45px;
+}
+
+.number p {
+    font-size: 30px;
+    line-height: 45px;
+    font-weight: 700;
+    color: #535261;
+}
+
+.percent-up, .percent-down{
+    border-radius: 7px;
+    width: 55px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.percent-up{
+    background-color: #FFEFD9;
+}
+
+.percent-down{
+    background-color: #FBE2E2;
+}
+
+
+.percent-up p, .percent-down p{
+    margin-top: 14px;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 600;
+    color: #FF9138;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: center;
+}
+
+.stats-board {
+    margin-left: 350px;
+    width: 990px;
+    height: 550px;
+    border-radius: 12px;
+    background-color: #fff;
+    margin-top: 20px;
+    padding: 24px;
+}
+
+.header-board {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-left-board {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.header-left-board .dropdown .btn-select-stats {
+    width: 106px;
+    height: 42px;
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: #7E7D88;
+    background: #FFFFFF;
+    border: 1.5px solid #D4D4D7;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.header-left-board p {
+    margin-top: 15px;
+    display: flex;
+    color: #282739;
+    font-weight: 600;
+    font-size: 16px;
+
+}
+
+.title-stats {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    color: #282739;
+}
+
+.date-stats{
+    font-weight: 400;
+    font-size: 14px;
+    color: #A9A9B0;
+}
+
+.content-right {
+    width: 550px;
+    background-color: #fff;
+    padding-left: 20px;
+}
+
+.overview-content {
+
+    width: 67px;
+    height: 54px;
+}
+
+.overview-content .number {
+    font-weight: 600;
+    font-size: 24px;
+    color: #535261;
+}
+
+.overview-detail{
+    width: 500px;
+    height: 120px;
+    background: #FFFFFF;
+    box-shadow: 2px 2px 15px rgba(70, 64, 67, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 0px;
+}
+
+.overview-content .text{
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.overview-content .text {
+    color: #FF7506;
+}
+
+.overview-content{
+    color: #4277FF;
+}
+
+.overview-content {
+    color: #35C75A;
+}
+
+.overview-content .text p,
+.text-service span,
+.text-numberlevel span {
+    margin-left: 5px;
+}
+
+
+.overview-status {
+    width: 145px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 21px;
+    color: #7E7D88;
+    align-items: center;
+}
+
+.overview-status div {
+    display: flex;
+    align-items: center;
+    line-height: 21px;
+    width: 145px;
+}
+
+
+.overview-status div p {
+    width: 108px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.overview-status div p svg {
+    margin-right: 4px;
+}
+
+.number-device {
+    color: #FF7506;
+}

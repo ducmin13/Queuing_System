@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/login.css">
     <title>Login</title>
 </head>
@@ -18,19 +19,19 @@
             <div class="col-md-4">
                 <img class="logo" src="img/Logo alta.png" alt="Ảnh">
                 <div class="form-login">
-                    <form>
+                    <form action="/new-password/{{ $token }}" method="post">
                         <div class="form-group">
                             <label for="username">Mật khẩu mới</label>
-                            <input type="password" class="form-control" id="password">
+                            <input name="password" type="password" class="form-control" id="password">
                         </div>
                         <div class="form-group">
                             <label for="password">Nhập lại mật khẩu</label>
-                            <input type="password" class="form-control" id="c-password">
+                            <input name="re-password" type="password" class="form-control" id="c-password">
                         </div>
                         <br><br>
-                        <a href="flogin" style="margin-left: 130px;" type="submit"
+                        <button style="margin-left: 130px;" type="submit"
                             class="btn btn-primary confirm">Xác
-                            nhận</a>
+                            nhận</button>
                     </form>
                 </div>
             </div>
@@ -44,6 +45,3 @@
     </div>
 
 </body>
-
-
-</html>

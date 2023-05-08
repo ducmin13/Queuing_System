@@ -19,15 +19,16 @@
                 <p><img class="logo" src="img/Logo alta.png" alt="Ảnh"></p>
                 <!-- Form login -->
 
-                <form class="form-login">
+                <form action="send-mail" method="POST" class="form-login">
+                    @csrf
                     <h4 style="text-align: center; font-weight: bold;">Đặt lại mật khẩu</h4>
                     <p>Vui lòng nhập lại email để đặt lại mật khẩu của bạn *</p>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="username" placeholder="Nhập email">
+                        <input name="email" type="text" class="form-control" placeholder="Nhập email">
                     </div>
                     <br>
                     <a href="flogin" type="submit" class="btn btn-primary cancel">Hủy</a>
-                    <a href="confirm-password" type="submit" class="btn btn-primary confirm">Tiếp tục</a>
+                    <button type="submit" class="btn btn-primary confirm">Tiếp tục</button>
                 </form>
             </div>
             <div class="col-md-8 content">

@@ -14,14 +14,40 @@ session_start();
 
 class HomeController extends Controller
 {
+
+    public function CheckAuth(){
+        $id = Session::get('id');
+        if($id){
+            return Redirect::to('/dashboard');
+        }else{
+            return Redirect::to('/login');
+        }
+    }
+
     public function dashboard()
     {
+        $this->CheckAuth();
         $info_user = DB::table('users')->where('id', Session::get('id'))->get();
         return view('pages.dashboard',compact('info_user'));
     }
 
+    public function device()
+    {
+        $this->CheckAuth();
+        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
+        return view('pages.device',compact('info_user'));
+    }
+
+    public function service()
+    {
+        $this->CheckAuth();
+        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
+        return view('pages.service',compact('info_user'));
+    }
+
     public function user()
     {
+        $this->CheckAuth();
         $info_user = DB::table('users')->where('id', Session::get('id'))->get();
         return view('pages.user',compact('info_user'));
     }

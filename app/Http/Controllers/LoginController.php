@@ -28,10 +28,7 @@ class LoginController extends Controller
         return view('pages.fforgot');
     }
 
-    public function confirm_password(){
-
-        return view('pages.confirm_password');
-    }
+    
 
     public function register(Request $request){
         // Validate the user input
@@ -44,13 +41,14 @@ class LoginController extends Controller
         // Create a new user in the database
         $user = new User;
         $user->name = $request->input('name');
+        $user->fullname = $request->input('fullname');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->save();
         auth()->login($user);
         // Log the user in and redirect them to the dashboard
         $request->session()->put('id', $user->id);
-        return Redirect('dashboard');
+        return Redirect('flogin');
     }
 
     public function login(Request $request)

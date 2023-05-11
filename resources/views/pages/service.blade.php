@@ -1,11 +1,11 @@
 @extends('welcome')
 @section('content')
 
-<link rel="stylesheet" href="{{ asset('css/service.css') }}">
+
 <div class="container mt-4" >
     <div class="mt-3">
 <div class="mt-3">
-    <h5 style="padding-left: 70px;color: orangered; font-size: 28px;">Quản lý dịch vụ</h5>
+    <h5 style="padding-left: 70px;color: #FF7506; font-size: 28px;">Quản lý dịch vụ</h5>
     <div class="row" style="width: 1200px;">
         <div class="col-lg-10">
             <div class="row">
@@ -44,6 +44,16 @@
     <!--  -->
     <div class="content-device" style="display: flex;">
         <div class="table-list-device">
+            <a href="/insert-service">
+            <div class="button-add-device">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M18.8884 2.33301H9.11171C4.86504 2.33301 2.33337 4.86467 2.33337 9.11134V18.8763C2.33337 23.1347 4.86504 25.6663 9.11171 25.6663H18.8767C23.1234 25.6663 25.655 23.1347 25.655 18.888V9.11134C25.6667 4.86467 23.135 2.33301 18.8884 2.33301ZM18.6667 14.8747H14.875V18.6663C14.875 19.1447 14.4784 19.5413 14 19.5413C13.5217 19.5413 13.125 19.1447 13.125 18.6663V14.8747H9.33337C8.85504 14.8747 8.45837 14.478 8.45837 13.9997C8.45837 13.5213 8.85504 13.1247 9.33337 13.1247H13.125V9.33301C13.125 8.85467 13.5217 8.45801 14 8.45801C14.4784 8.45801 14.875 8.85467 14.875 9.33301V13.1247H18.6667C19.145 13.1247 19.5417 13.5213 19.5417 13.9997C19.5417 14.478 19.145 14.8747 18.6667 14.8747Z"
+                        fill="#FF9138" />
+                </svg>
+                <p>Thêm dịch vụ</p>
+            </a>
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -51,7 +61,7 @@
                     <td class="border-table" style="color: #ffffff; font-size: 16px;">Tên dịch vụ</td>
                     <td class="text-light" style="color: #ffffff; font-size: 16px;">Mô tả</td>
                     <td class="border-table" style="color: #ffffff; font-size: 16px;">Trạng thái hoạt động</td>
-                    <td class="text-light" style="color: #ffffff; font-size: 16px;"></td>
+                    <td class="border-table" style="color: #ffffff; font-size: 16px;"></td>
                     <td class="th-border-right" style="color: #ffffff; font-size: 16px;"></td>
                     </tr>
                 </thead>
@@ -64,7 +74,7 @@
                             <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
                             </svg> Hoạt động</td>
-                        <td><a href="#">Chi tiết</a></td>
+                        <td class="border-table"><a href="#">Chi tiết</a></td>
                         <td><a href="#">Cập nhật</a></td>
                     </tr>
 
@@ -76,7 +86,7 @@
                             <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
                             </svg> Hoạt động</td>
-                        <td><a href="#">Chi tiết</a></td>
+                        <td class="border-table"><a href="#">Chi tiết</a></td>
                         <td><a href="#">Cập nhật</a></td>
                     </tr>
 
@@ -88,7 +98,7 @@
                             <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="4" cy="4.5" r="4" fill="#E73F3F" />
                             </svg> Ngưng hoạt động</td>
-                        <td><a href="#">Chi tiết</a></td>
+                        <td class="border-table"><a href="#">Chi tiết</a></td>
                         <td><a href="#">Cập nhật</a></td>
                     </tr>
 
@@ -100,7 +110,7 @@
                             <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
                             </svg> Hoạt động</td>
-                        <td><a href="#">Chi tiết</a></td>
+                        <td class="border-table"><a href="#">Chi tiết</a></td>
                         <td><a href="#">Cập nhật</a></td>
                     </tr>
 
@@ -112,7 +122,7 @@
                             <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
                             </svg> Hoạt động</td>
-                        <td><a href="#">Chi tiết</a></td>
+                        <td class="border-table"><a href="#">Chi tiết</a></td>
                         <td><a href="#">Cập nhật</a></td>
                     </tr>
 
@@ -124,7 +134,7 @@
                             <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
                             </svg> Hoạt động</td>
-                        <td><a href="#">Chi tiết</a></td>
+                        <td class="border-table"><a href="#">Chi tiết</a></td>
                         <td><a href="#">Cập nhật</a></td>
                     </tr>
 
@@ -136,7 +146,7 @@
                             <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
                             </svg> Hoạt động</td>
-                        <td><a href="#">Chi tiết</a></td>
+                        <td class="border-table"><a href="#">Chi tiết</a></td>
                         <td><a href="#">Cập nhật</a></td>
                     </tr>
 
@@ -148,7 +158,7 @@
                             <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="4" cy="4.5" r="4" fill="#E73F3F" />
                             </svg> Ngưng hoạt động</td>
-                        <td><a href="#">Chi tiết</a></td>
+                        <td class="border-table"><a href="#">Chi tiết</a></td>
                         <td><a href="#">Cập nhật</a></td>
                     </tr>
 
@@ -160,7 +170,7 @@
                             <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
                             </svg> Hoạt động</td>
-                        <td><a href="#">Chi tiết</a></td>
+                        <td class="border-table"><a href="#">Chi tiết</a></td>
                         <td class="th-border-bottom-right"><a href="#">Cập nhật</a></td>
                     </tr>
                 </tbody>
@@ -177,7 +187,6 @@
             </div>
         </div>
     <!--  -->
-</div>
 
 <div class="phantrang">
     <ul class="trang">
@@ -198,5 +207,5 @@
 </div>
 </div>
 </div>
-
+<link rel="stylesheet" href="{{ asset('css/service.css') }}">
 @endsection

@@ -17,10 +17,10 @@ class HomeController extends Controller
 
     public function CheckAuth(){
         $id = Session::get('id');
-        if($id){
+        if($id != NULL){
             return Redirect::to('/dashboard');
         }else{
-            return Redirect::to('/login');
+            return Redirect::to('/flogin');
         }
     }
 
@@ -36,6 +36,48 @@ class HomeController extends Controller
         $this->CheckAuth();
         $info_user = DB::table('users')->where('id', Session::get('id'))->get();
         return view('pages.device',compact('info_user'));
+    }
+
+    public function fnumber()
+    {
+        $this->CheckAuth();
+        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
+        return view('pages.number',compact('info_user'));
+    }
+
+    public function fnew_number()
+    {
+        $this->CheckAuth();
+        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
+        return view('pages.add_new_number',compact('info_user'));
+    }
+
+    public function finsert_device()
+    {
+        $this->CheckAuth();
+        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
+        return view('pages.insert_device',compact('info_user'));
+    }
+
+    public function finsert_service()
+    {
+        $this->CheckAuth();
+        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
+        return view('pages.insert_service',compact('info_user'));
+    }
+
+    public function finfo_device()
+    {
+        $this->CheckAuth();
+        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
+        return view('pages.info_device',compact('info_user'));
+    }
+
+    public function fupdate_device()
+    {
+        $this->CheckAuth();
+        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
+        return view('pages.update_device',compact('info_user'));
     }
 
     public function service()

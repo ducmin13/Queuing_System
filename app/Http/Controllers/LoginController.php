@@ -62,13 +62,14 @@ class LoginController extends Controller
         ];
 
         if (Auth::attempt($credentials)) {
-            $user = User::where('name', $name)->first();
+            $user = Auth::user();
             $request->session()->put('id', $user->id);
             $info_user = DB::table('users')->where('id', Session::get('id'))->get();
-            return view('pages.dashboard',compact('info_user'));
+            return view('pages.dashboard', compact('info_user'));
         } else {
-            Session::put('message','Sai mật khẩu hoặc tên đăng nhập');
-            return Redirect('flogin');
+            Session::put('message', 'Sai mật khẩu hoặc tên đăng nhập');
+            return redirect('flogin');
         }
     }
+
 }

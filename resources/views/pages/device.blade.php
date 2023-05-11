@@ -4,13 +4,13 @@
 <link rel="stylesheet" href="{{ asset('css/device.css') }}">
  <div class="container mt-4" >
     <div class="mt-3">
-        <h5 style="padding-left: 80px;color: #FF7506; font-size: 28px;">Danh sách thiết bị</h5>
+        <h5>Danh sách thiết bị</h5>
         <div class="row" >
             <!-- Danh sách thiết bị -->
             <div class="col-lg-10">
                 <div class="row">
                     <div class="col-lg-4">
-                        <p style="padding-left: 100px;font-weight: 600; line-height: 40px;">Trạng thái hoạt động
+                        <p style="padding-left: 70px;font-weight: 600; line-height: 40px;">Trạng thái hoạt động
                             <span class="dropdown-icon">
                                 <select name="hoatdong" class="dropd">
                                     <option value="" disabled selected>Tất cả</option>
@@ -45,9 +45,19 @@
             </div>
             <div class="col-lg-2"></div>
         </div>
-        <!--  -->
+
         <div class="content-device" style="display: flex;">
             <div class="table-list-device">
+                <a href="/insert-device">
+                <div class="button-add-device">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.8884 2.33301H9.11171C4.86504 2.33301 2.33337 4.86467 2.33337 9.11134V18.8763C2.33337 23.1347 4.86504 25.6663 9.11171 25.6663H18.8767C23.1234 25.6663 25.655 23.1347 25.655 18.888V9.11134C25.6667 4.86467 23.135 2.33301 18.8884 2.33301ZM18.6667 14.8747H14.875V18.6663C14.875 19.1447 14.4784 19.5413 14 19.5413C13.5217 19.5413 13.125 19.1447 13.125 18.6663V14.8747H9.33337C8.85504 14.8747 8.45837 14.478 8.45837 13.9997C8.45837 13.5213 8.85504 13.1247 9.33337 13.1247H13.125V9.33301C13.125 8.85467 13.5217 8.45801 14 8.45801C14.4784 8.45801 14.875 8.85467 14.875 9.33301V13.1247H18.6667C19.145 13.1247 19.5417 13.5213 19.5417 13.9997C19.5417 14.478 19.145 14.8747 18.6667 14.8747Z"
+                            fill="#FF9138" />
+                    </svg>
+                    <p>Thêm thiết bị</p>
+                </div>
+                </a>
                 <table>
                     <thead>
                         <tr>
@@ -77,8 +87,8 @@
                             <td class="border-table pt-3">
                                 <p>Khám tim mạch, Khám mắt...<br><br><a href="">Xem thêm</a></p>
                             </td>
-                            <td><a href="#">Chi tiết</a></td>
-                            <td><a href="#">Cập nhật</a></td>
+                            <td><a href="/info-device">Chi tiết</a></td>
+                            <td><a href="/update-device">Cập nhật</a></td>
                         </tr>
                         <tr class="color-tr-or">
                             <td>KIO_01</td>
@@ -95,8 +105,8 @@
                             <td class="border-table pt-3">
                                 <p>Khám tim mạch, Khám mắt...<br><br><a href="">Xem thêm</a></p>
                             </td>
-                            <td><a href="#">Chi tiết</a></td>
-                            <td><a href="#">Cập nhật</a></td>
+                            <td><a href="/info-device">Chi tiết</a></td>
+                            <td><a href="/update-device">Cập nhật</a></td>
                         </tr>
                         <tr class="color-tr-white">
                             <td>KIO_01</td>
@@ -113,8 +123,8 @@
                             <td class="border-table pt-3">
                                 <p>Khám tim mạch, Khám mắt...<br><br><a href="">Xem thêm</a></p>
                             </td>
-                            <td><a href="#">Chi tiết</a></td>
-                            <td><a href="#">Cập nhật</a></td>
+                            <td><a href="/info-device">Chi tiết</a></td>
+                            <td><a href="/update-device">Cập nhật</a></td>
                         </tr>
                         <tr class="color-tr-or">
                             <td>KIO_01</td>
@@ -131,8 +141,8 @@
                             <td class="border-table pt-3">
                                 <p>Khám tim mạch, Khám mắt...<br><br><a href="">Xem thêm</a></p>
                             </td>
-                            <td><a href="#">Chi tiết</a></td>
-                            <td><a href="#">Cập nhật</a></td>
+                            <td><a href="/info-device">Chi tiết</a></td>
+                            <td><a href="/update-device">Cập nhật</a></td>
                         </tr>
                         <tr class="color-tr-white">
                             <td>KIO_01</td>
@@ -149,8 +159,8 @@
                             <td class="border-table pt-3">
                                 <p>Khám tim mạch, Khám mắt...<br><br><a href="">Xem thêm</a></p>
                             </td>
-                            <td><a href="#">Chi tiết</a></td>
-                            <td><a href="#">Cập nhật</a></td>
+                            <td><a href="/info-device">Chi tiết</a></td>
+                            <td><a href="/update-device">Cập nhật</a></td>
                         </tr>
 
                         <tr class="color-tr-or">
@@ -168,8 +178,8 @@
                             <td class="border-table pt-3">
                                 <p>Khám tim mạch, Khám mắt...<br><br><a href="">Xem thêm</a></p>
                             </td>
-                            <td><a href="#">Chi tiết</a></td>
-                            <td><a href="#">Cập nhật</a></td>
+                            <td><a href="/info-device">Chi tiết</a></td>
+                            <td><a href="/update-device">Cập nhật</a></td>
                         </tr>
 
 
@@ -188,8 +198,8 @@
                             <td class="border-table pt-3">
                                 <p>Khám tim mạch, Khám mắt...<br><br><a href="">Xem thêm</a></p>
                             </td>
-                            <td><a href="#">Chi tiết</a></td>
-                            <td><a href="#">Cập nhật</a></td>
+                            <td><a href="/info-device">Chi tiết</a></td>
+                            <td><a href="/update-device">Cập nhật</a></td>
                         </tr>
 
  
@@ -208,8 +218,8 @@
                             <td class="border-table pt-3">
                                 <p>Khám tim mạch, Khám mắt...<br><br><a href="">Xem thêm</a></p>
                             </td>
-                            <td><a href="#">Chi tiết</a></td>
-                            <td><a href="#">Cập nhật</a></td>
+                            <td><a href="/info-device">Chi tiết</a></td>
+                            <td><a href="/update-device">Cập nhật</a></td>
                         </tr>
                         <tr class="color-tr-white">
                             <td class="th-border-bottom-left">KIO_01</td>
@@ -226,24 +236,12 @@
                             <td class="border-table pt-3">
                                 <p>Khám tim mạch, Khám mắt...<br><br><a href="">Xem thêm</a></p>
                             </td>
-                            <td><a href="#">Chi tiết</a></td>
-                            <td class="th-border-bottom-right"><a href="#">Cập nhật</a></td>
+                            <td><a href="/info-device">Chi tiết</a></td>
+                            <td class="th-border-bottom-right"><a href="/update-device">Cập nhật</a></td>
                         </tr>
 
                     </tbody>
                 </table>
-
-                </div>
-                <div class="themthietbi">
-                    <a href="insert-device" style="text-decoration: none; color: orangered;">
-                        <div>
-                            <p><svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18.8884 2.33301H9.11171C4.86504 2.33301 2.33337 4.86467 2.33337 9.11134V18.8763C2.33337 23.1347 4.86504 25.6663 9.11171 25.6663H18.8767C23.1234 25.6663 25.655 23.1347 25.655 18.888V9.11134C25.6667 4.86467 23.135 2.33301 18.8884 2.33301ZM18.6667 14.8747H14.875V18.6663C14.875 19.1447 14.4784 19.5413 14 19.5413C13.5217 19.5413 13.125 19.1447 13.125 18.6663V14.8747H9.33337C8.85504 14.8747 8.45837 14.478 8.45837 13.9997C8.45837 13.5213 8.85504 13.1247 9.33337 13.1247H13.125V9.33301C13.125 8.85467 13.5217 8.45801 14 8.45801C14.4784 8.45801 14.875 8.85467 14.875 9.33301V13.1247H18.6667C19.145 13.1247 19.5417 13.5213 19.5417 13.9997C19.5417 14.478 19.145 14.8747 18.6667 14.8747Z" fill="#FF9138"/>
-                            </svg>
-                            <br>
-                            Thêm thiết bị</p>
-                        </div>
-                    </a>
                 </div>
             </div>
         <!--  -->

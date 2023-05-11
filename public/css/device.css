@@ -1,23 +1,5 @@
-
-.themthietbi {
-    margin-top: 10px;
-    width: 80px; 
-    height: 90px;
-    text-align: center; 
-    border-radius: 8px 8px px 8px;
-    background-color: #fceac8;
-    padding: 5px;
-    box-shadow: 1px 1px 10px #848387;
-    font-weight: 600;
-}
-.themthietbi i {
-    color: orangered;
-    font-size: 29px;
-}
-
-
 .table-list-device {
-    padding-left: 100px;
+    padding-left: 70px;
     width: 1000px;
     margin-top: 5px;
     border-radius: 12px;
@@ -76,7 +58,24 @@ td a {
 tr:nth-child(even) {
   background-color: #FFF2E7;
 }
-/* Phân trang */
+
+h5{
+    padding-left: 70px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 36px;
+    /* identical to box height, or 150% */
+
+
+    /* Orange/$-Orange-500 */
+
+    color: #FF7506;
+
+}
+
+
 .phantrang {
     display: inline-block;
     height: 32px;
@@ -110,36 +109,6 @@ tr:nth-child(even) {
     color: #ffffff !important;
     font-weight: 600;
     font-size: 19px;
-}
-
-.themthietbi {
-    margin-top: 16px;
-    width: 80px; 
-    height: 90px;
-    text-align: center; 
-    border-radius: 8px 8px px 8px;
-    background-color: #fceac8;
-    padding: 5px;
-    box-shadow: 1px 1px 10px #848387;
-    font-weight: 600;
-}
-
-.themthietbi i {
-    color: orangered;
-    font-size: 29px;
-}
-
-.khung_themthietbi {
-    margin-top: 25px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    width: 1100px;
-    height: 560px;
-    box-shadow: 2px 2px 10px #848387;
-    padding-left: 20px;
-}
-.khung_themthietbi p {
-    font-weight: 600;
 }
 
 .nhap_themthietbi {
@@ -183,7 +152,6 @@ tr:nth-child(even) {
     color: orangered;
     font-size: 25px;
 }
-
 
 .icon_search {
     color: orangered;
@@ -253,3 +221,280 @@ tr:nth-child(even) {
     font-size: 19px;
 }
 
+.button-add-device {
+    position: absolute;
+    width: 80px;
+    height: 94px;
+    background: #FFF2E7;
+    box-shadow: 0px 0px 6px #E7E9F2;
+    border-radius: 8px 0px 0px 8px;
+    padding: 10px;
+    text-align: center;
+    right: 0;
+}
+
+.button-add-device p, .button-update-device p {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    color: #FF7506;
+    margin-top: 5px;
+}
+
+
+.content-add-device {
+    margin-left: 300px;
+    display: inline-block;
+}
+
+.area-form-add-device {
+    width: 1500px;
+    height: 600px;
+    background: #FFFFFF;
+    box-shadow: 2px 2px 8px rgba(232, 239, 244, 0.8);
+    border-radius: 16px;
+    margin-top: 10px;
+    padding: 16px 24px;
+}
+
+.area-form-add-device .infomation-device,
+.area-form-add-role .infomation-device {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    color: #FF7506;
+}
+
+.form-add-device {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.item-form-add-device, .item-form-add-role {
+    margin-top: 25px;
+}
+
+.item-form-add-device label, .item-form-add-role label, .area-form-right-role label {
+    display: block;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #282739;
+}
+
+.item-form-add-device label svg, .item-form-add-role label svg {
+    margin-left: 4px;
+}
+
+.item-form-add-device input, .item-form-add-device select {
+    width: 650px;
+    height: 50px;
+    background: #FFFFFF;
+    border: 2px solid #D4D4D7;
+    border-radius: 8px;
+    padding-left: 12px;
+    margin-top: 5px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.item-form-add-device input::placeholder,
+.item-form-add-role input::placeholder,
+.item-form-add-role textarea::placeholder {
+    color: #A9A9B0;
+}
+
+.item-form-add-device .input-user-device {
+    width: 1450px;
+    height: 80px;
+    background: #FFFFFF;
+    border: 2px solid #D4D4D7;
+    border-radius: 8px;
+}
+
+.item-form-add-device .input-choose-device {
+    width: 650px;
+    height: 50px;
+    background: #FFFFFF;
+    border: 2px solid #D4D4D7;
+    border-radius: 8px;
+    padding-left: 12px;
+    margin-top: 5px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 12px;
+    color: #A9A9B0;
+}
+
+.list-choose-device {
+    width: 540px;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+}
+
+.note-form-add-device {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #7E7D88;
+    display: flex;
+    align-items: center;
+    margin-top: 18px;
+}
+
+.note-form-add-device svg {
+    margin-right: 4px;
+}
+
+.area-button-add_device {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}
+
+.area-button-add_device button {
+    width: 147px;
+    height: 48px;
+    border: 2px solid #FF9138;
+    box-shadow: 0px 0px 6px #E7E9F2;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+
+}
+
+.btn-add-device-abort {
+    background: #FFF2E7;
+    color: #FF9138;
+}
+
+.btn-add-device-add {
+    background: #FF9138;
+    color: #FFFFFF;
+}
+
+
+.button-update-device {
+    position: absolute;
+    margin-top: 100px;
+    width: 80px;
+    height: 94px;
+    background: #FFF2E7;
+    box-shadow: 0px 0px 6px #E7E9F2;
+    border-radius: 8px 0px 0px 8px;
+    padding: 12px 4px;
+    text-align: center;
+    right: 0;
+    top: 150px;
+}
+
+.info-device {
+    margin-top: 20px;
+    display: flex;
+
+}
+
+.item-info-device {
+    flex: 1;
+}
+
+.item-info-device .text-info-device {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.item-info-device .text-info-device p {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #282739;
+    width: 150px;
+    height: 24px;
+}
+
+.item-info-device .text-info-device span {
+    margin-left: 50px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #535261;
+    width: 150px;
+    height: 24px;
+}
+
+.item-info-device-use-device {
+    display: block;
+}
+
+.item-info-device-use-device p {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #282739;
+    margin: 8px 0;
+}
+
+.item-info-device-use-device span {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #535261;
+}
+
+.area-button-update_device {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 26px;
+}
+
+.area-button-update_device button {
+    width: 115px;
+    height: 48px;
+    border: 2px solid #FF9138;
+    box-shadow: 0px 0px 6px #E7E9F2;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.input-choose-device {
+    width: 540px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 2px solid #D4D4D7;
+    border-radius: 8px;
+    padding-left: 12px;
+    margin-top: 5px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 12px;
+    color: #A9A9B0;
+}
+
+.list-choose-device {
+    width: 540px;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+}

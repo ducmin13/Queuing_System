@@ -15,12 +15,12 @@ session_start();
 class HomeController extends Controller
 {
 
-    public function CheckAuth(){
-        $id = Session::get('id');
-        if($id != NULL){
-            return Redirect::to('/dashboard');
-        }else{
-            return Redirect::to('/flogin');
+    public function CheckAuth()
+    {
+        if (Session::has('id')) {
+            return redirect('/dashboard');
+        } else {
+            return redirect('/flogin');
         }
     }
 
@@ -31,12 +31,7 @@ class HomeController extends Controller
         return view('pages.dashboard',compact('info_user'));
     }
 
-    public function device()
-    {
-        $this->CheckAuth();
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
-        return view('pages.device',compact('info_user'));
-    }
+   
 
     public function fnumber()
     {
@@ -52,40 +47,6 @@ class HomeController extends Controller
         return view('pages.add_new_number',compact('info_user'));
     }
 
-    public function finsert_device()
-    {
-        $this->CheckAuth();
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
-        return view('pages.insert_device',compact('info_user'));
-    }
-
-    public function finsert_service()
-    {
-        $this->CheckAuth();
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
-        return view('pages.insert_service',compact('info_user'));
-    }
-
-    public function finfo_device()
-    {
-        $this->CheckAuth();
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
-        return view('pages.info_device',compact('info_user'));
-    }
-
-    public function fupdate_device()
-    {
-        $this->CheckAuth();
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
-        return view('pages.update_device',compact('info_user'));
-    }
-
-    public function service()
-    {
-        $this->CheckAuth();
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
-        return view('pages.service',compact('info_user'));
-    }
 
     public function user()
     {
@@ -105,9 +66,12 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
-    public function logout() {
-        session()->put('id', NULL);
+    public function logout()
+    {
+        Auth::logout();
+        session()->forget('id');
         return view('pages.flogin');
     }
+
 
 }

@@ -24,7 +24,7 @@
                 <li style="margin-left: 1000px;" class="nav-item">
                     <div style="display: flex; align-items: center;">
                         <a class="nav-link bell" href=""><img src="img/Frame 271.png" alt=""></a>
-                        <a class="nav-link" href="/user"><img class="avatar" src="img/avatar.png" alt=""></a>
+                        <a class="nav-link" href="/user"><img class="avatar" src="{{ asset('img/avatar.png') }}" alt=""></a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -40,7 +40,7 @@
 </header>
 <div class="sidebar-container">
     <div class="logo-container">
-        <img src="img/Logo-menu.png" alt="logo">
+        <img src="{{ asset('img/Logo-menu.png') }}" alt="logo">
     </div>
     <ul class="menu-list">
         <li class="menu-item">
@@ -63,7 +63,7 @@
             </a>
         </li>
         <li class="menu-item">
-            <a href="device">
+            <a href="/device">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M5.3665 1.66602H14.6248C17.5915 1.66602 18.3332 2.40768 18.3332 5.36602V10.641C18.3332 13.6077 17.5915 14.341 14.6332 14.341H5.3665C2.40817 14.3493 1.6665 13.6077 1.6665 10.6493V5.36602C1.6665 2.40768 2.40817 1.66602 5.3665 1.66602Z"
@@ -79,7 +79,7 @@
             </a>
         </li>
         <li class="menu-item">
-            <a href="service">
+            <a href="/service">
                 <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="4.57986" cy="14.4016" r="0.708276" fill="#A9A9B0" />
                     <circle cx="6.9407" cy="14.4016" r="0.708276" fill="#A9A9B0" />

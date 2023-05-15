@@ -48,7 +48,7 @@
 
         <div class="content-device" style="display: flex;">
             <div class="table-list-device">
-                <a href="/insert-device">
+                <a href="/device/new">
                 <div class="button-add-device">
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -72,32 +72,48 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($devices as $device)
                         <tr class="color-tr-white">
-                            <td>KIO_01</td>
-                            <td class="border-table">Kiosk</td>
-                            <td>192.168.1.10</td>
+                            <td>{{ $device->device_id }}</td>
+                            <td class="border-table">{{ $device->device_name }}</td>
+                            <td>{{ $device->ip_address }}</td>
                             <td class="border-table">
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                @if($device->device_status == 'active') 
+                                    <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
+                                    </svg>
+                                        Hoạt động
+                                @else
+                                    <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="4" cy="4.5" r="4" fill="#EC3740" />
-                                </svg> Ngưng hoạt động</td>
+                                    </svg>
+                                        Ngưng hoạt động
+                                @endif</td>
+
                             <td class="border-table">
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="4" cy="4.5" r="4" fill="#E73F3F" />
-                                </svg> Mất kết nối</td>
+                                @if($device->device_connect == 'connected') 
+                                    <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
+                                    </svg> Kết nối</td>
+                                @else
+                                    <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="4" cy="4.5" r="4" fill="#E73F3F" />
+                                    </svg> Mất kết nối</td>
+                                @endif
+
                             <td class="border-table pt-3">
-                                <p>Khám tim mạch, Khám mắt...<br><br><a href="">Xem thêm</a></p>
+                                <p>{{ $device->service}}<br><br><a href="/device/info/{{$device->id}}">Xem thêm</a></p>
                             </td>
-                            <td><a href="/info-device">Chi tiết</a></td>
-                            <td><a href="/update-device">Cập nhật</a></td>
+                            <td><a href="/device/info/{{$device->id}}">Chi tiết</a></td>
+                            <td><a href="/device/fupdate/{{ $device->id }}">Cập nhật</a></td>
                         </tr>
-                        <tr class="color-tr-or">
+                        @endforeach
+                        {{-- <tr class="color-tr-or">
                             <td>KIO_01</td>
                             <td class="border-table">Kiosk</td>
                             <td>192.168.1.10</td>
                             <td class="border-table">
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
-                                </svg> Hoạt động</td>
+                                 Hoạt động</td>
                             <td class="border-table">
                                 <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
@@ -106,140 +122,8 @@
                                 <p>Khám tim mạch, Khám mắt...<br><br><a href="">Xem thêm</a></p>
                             </td>
                             <td><a href="/info-device">Chi tiết</a></td>
-                            <td><a href="/update-device">Cập nhật</a></td>
-                        </tr>
-                        <tr class="color-tr-white">
-                            <td>KIO_01</td>
-                            <td class="border-table">Kiosk</td>
-                            <td>192.168.1.10</td>
-                            <td class="border-table">
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
-                                </svg> Hoạt động</td>
-                            <td class="border-table">
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="4" cy="4.5" r="4" fill="#E73F3F" />
-                                </svg> Mất kết nối</td>
-                            <td class="border-table pt-3">
-                                <p>Khám tim mạch, Khám mắt...<br><br><a href="">Xem thêm</a></p>
-                            </td>
-                            <td><a href="/info-device">Chi tiết</a></td>
-                            <td><a href="/update-device">Cập nhật</a></td>
-                        </tr>
-                        <tr class="color-tr-or">
-                            <td>KIO_01</td>
-                            <td class="border-table">Kiosk</td>
-                            <td>192.168.1.10</td>
-                            <td class="border-table">
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="4" cy="4.5" r="4" fill="#E73F3F" />
-                                </svg> Ngưng hoạt động</td>
-                            <td class="border-table">
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
-                                </svg> Kết nối</td>
-                            <td class="border-table pt-3">
-                                <p>Khám tim mạch, Khám mắt...<br><br><a href="">Xem thêm</a></p>
-                            </td>
-                            <td><a href="/info-device">Chi tiết</a></td>
-                            <td><a href="/update-device">Cập nhật</a></td>
-                        </tr>
-                        <tr class="color-tr-white">
-                            <td>KIO_01</td>
-                            <td class="border-table">Kiosk</td>
-                            <td>192.168.1.10</td>
-                            <td class="border-table">
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
-                                </svg> Hoạt động</td>
-                            <td class="border-table">
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="4" cy="4.5" r="4" fill="#E73F3F" />
-                                </svg> Mất kết nối</td>
-                            <td class="border-table pt-3">
-                                <p>Khám tim mạch, Khám mắt...<br><br><a href="">Xem thêm</a></p>
-                            </td>
-                            <td><a href="/info-device">Chi tiết</a></td>
-                            <td><a href="/update-device">Cập nhật</a></td>
-                        </tr>
-
-                        <tr class="color-tr-or">
-                            <td>KIO_01</td>
-                            <td class="border-table">Kiosk</td>
-                            <td>192.168.1.10</td>
-                            <td class="border-table">
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
-                                </svg> Hoạt động</td>
-                            <td class="border-table">
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
-                                </svg> Kết nối</td>
-                            <td class="border-table pt-3">
-                                <p>Khám tim mạch, Khám mắt...<br><br><a href="">Xem thêm</a></p>
-                            </td>
-                            <td><a href="/info-device">Chi tiết</a></td>
-                            <td><a href="/update-device">Cập nhật</a></td>
-                        </tr>
-
-
-                        <tr class="color-tr-white">
-                            <td>KIO_01</td>
-                            <td class="border-table">Kiosk</td>
-                            <td>192.168.1.10</td>
-                            <td class="border-table">
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="4" cy="4.5" r="4" fill="#E73F3F" />
-                                </svg> Ngưng hoạt động</td>
-                            <td class="border-table">
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
-                                </svg> Kết nối</td>
-                            <td class="border-table pt-3">
-                                <p>Khám tim mạch, Khám mắt...<br><br><a href="">Xem thêm</a></p>
-                            </td>
-                            <td><a href="/info-device">Chi tiết</a></td>
-                            <td><a href="/update-device">Cập nhật</a></td>
-                        </tr>
-
- 
-                        <tr class="color-tr-or">
-                            <td>KIO_01</td>
-                            <td class="border-table">Kiosk</td>
-                            <td>192.168.1.10</td>
-                            <td class="border-table">
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
-                                </svg> Hoạt động</td>
-                            <td class="border-table">
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
-                                </svg> Kết nối</td>
-                            <td class="border-table pt-3">
-                                <p>Khám tim mạch, Khám mắt...<br><br><a href="">Xem thêm</a></p>
-                            </td>
-                            <td><a href="/info-device">Chi tiết</a></td>
-                            <td><a href="/update-device">Cập nhật</a></td>
-                        </tr>
-                        <tr class="color-tr-white">
-                            <td class="th-border-bottom-left">KIO_01</td>
-                            <td class="border-table">Kiosk</td>
-                            <td>192.168.1.10</td>
-                            <td class="border-table">
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
-                                </svg> Hoạt động</td>
-                            <td class="border-table">
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="4" cy="4.5" r="4" fill="#E73F3F" />
-                                </svg> Mất kết nối</td>
-                            <td class="border-table pt-3">
-                                <p>Khám tim mạch, Khám mắt...<br><br><a href="">Xem thêm</a></p>
-                            </td>
-                            <td><a href="/info-device">Chi tiết</a></td>
-                            <td class="th-border-bottom-right"><a href="/update-device">Cập nhật</a></td>
-                        </tr>
-
+                            <td><a href="/fupdate-device">Cập nhật</a></td>
+                        </tr> --}}
                     </tbody>
                 </table>
                 </div>

@@ -8,11 +8,11 @@
             <p>Quản lý thiết bị</p>
         </div>
     <div class="content-add-device">
+        @foreach($device as $value)
         <div class="area-form-add-device">
             <p class="infomation-device">Thông tin thiết bị</p>
-
             <form id="form-update-device" class="form-add-device"
-                action="" method="POST">
+                action="/device/update/{{ $value->id }}" method="POST">
 
                 <div class="item-form-add-device">
                     <label for="device_id">Mã thiết bị: <svg width="6" height="6" viewBox="0 0 6 6" fill="none"
@@ -22,7 +22,7 @@
                                 fill="#FF4747" />
                         </svg>
                     </label>
-                    <input name="device_id" type="text" placeholder="" value="">
+                    <input name="device_id" type="text" placeholder="" value="{{ $value->device_id }}">
                 </div>
 
                 <div class="item-form-add-device">
@@ -33,11 +33,11 @@
                                 fill="#FF4747" />
                         </svg>
                     </label>
-
                     <select class="input-choose-device" name="device_type" id="">
-                        <option value="Kiosk">Kiosk
+                        <option value="Kiosk" {!! ($value ->device_type) == 'Kiosk' ? 'selected' : '' !!}>Kiosk
                         </option>
-                        <option value="Display counter">Display counter</option>
+                        <option value="Display counter" {!! ($value ->device_type) == 'display counter' ? 'selected' :
+                            '' !!}>Display counter</option>
                     </select>
                 </div>
 
@@ -49,7 +49,7 @@
                                 fill="#FF4747" />
                         </svg>
                     </label>
-                    <input name="name" type="text" placeholder="" value="">
+                    <input name="name" type="text" placeholder="" value="{{ $value ->device_name }}">
                 </div>
 
                 <div class="item-form-add-device">
@@ -60,7 +60,7 @@
                                 fill="#FF4747" />
                         </svg>
                     </label>
-                    <input name="username" type="text" placeholder="" value="">
+                    <input name="username" type="text" placeholder="" value="{{ $value ->username }}">
                 </div>
 
                 <div class="item-form-add-device">
@@ -71,7 +71,7 @@
                                 fill="#FF4747" />
                         </svg>
                     </label>
-                    <input name="address" type="text" placeholder="" value="">
+                    <input name="address" type="text" placeholder="" value="{{ $value ->ip_address }}">
                 </div>
 
                 <div class="item-form-add-device">
@@ -82,7 +82,7 @@
                                 fill="#FF4747" />
                         </svg>
                     </label>
-                    <input name="password" type="text" placeholder="" value="">
+                    <input name="password" type="text" placeholder="" value="{{ $value ->password }}">
                 </div>
 
                 <div class="item-form-add-device">
@@ -93,7 +93,7 @@
                                 fill="#FF4747" />
                         </svg>
                     </label>
-                    <input class="input-user-device" name="service_use" type="text" value="">
+                    <input class="input-user-device" name="service_use" type="text" value="{{ $value ->service }}">
                 </div>
 
                 <span class="note-form-add-device">
@@ -112,6 +112,7 @@
             </a>
             <button form="form-update-device" class="btn-add-device-add" type="submit">Cập nhật</button>
         </div>
+        @endforeach
     </div>
 </main>
 

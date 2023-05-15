@@ -31,7 +31,6 @@ class LoginController extends Controller
     
 
     public function register(Request $request){
-        // Validate the user input
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
@@ -45,8 +44,6 @@ class LoginController extends Controller
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->save();
-        auth()->login($user);
-        // Log the user in and redirect them to the dashboard
         $request->session()->put('id', $user->id);
         return Redirect('flogin');
     }
@@ -63,6 +60,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
+            auth()->login($user);
             $request->session()->put('id', $user->id);
             $info_user = DB::table('users')->where('id', Session::get('id'))->get();
             return view('pages.dashboard', compact('info_user'));

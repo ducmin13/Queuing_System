@@ -44,7 +44,7 @@
     <!--  -->
     <div class="content-device" style="display: flex;">
         <div class="table-list-device">
-            <a href="/insert-service">
+            <a href="/service/new">
             <div class="button-add-device">
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path

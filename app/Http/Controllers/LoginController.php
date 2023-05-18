@@ -62,6 +62,7 @@ class LoginController extends Controller
             $user = Auth::user();
             auth()->login($user);
             $request->session()->put('id', $user->id);
+            $request->session()->put('name', $user->fullname);
             $info_user = DB::table('users')->where('id', Session::get('id'))->get();
             return view('pages.dashboard', compact('info_user'));
         } else {

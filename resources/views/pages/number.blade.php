@@ -10,70 +10,54 @@
         <div style="padding-left: 80px" class="area-filter">
             <div class="dropdown status-device">
                 <p class="text-status-device">Tên dịch vụ</p>
-
-                <button class="btn-select-service" role="button" id="dropdownMenuNameService"
-                    data-bs-toggle="dropdown" aria-expanded="false"> Tất cả
-                    <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L7 7L13 1" fill="#FF7506" />
-                        <path d="M1 1L7 7L13 1H1Z" stroke="#FF7506" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </button>
-
-                <ul class="dropdown-menu list-name-service" aria-labelledby="dropdownMenuNameService">
-                    <li><a class="dropdown-item active-date-stats item-date-stats" href="#">Tất cả</a>
-                    </li>
-                    <li><a class="dropdown-item item-date-stats" href="#">Khám sản - Phụ khoa</a></li>
-                    <li><a class="dropdown-item item-date-stats" href="#">Khám răng hàm mặt</a></li>
-                    <li><a class="dropdown-item item-date-stats" href="#">Khám tim mạch</a></li>
-                    <li><a class="dropdown-item item-date-stats" href="#">Khám hô hấp</a></li>
-                    <li><a class="dropdown-item item-date-stats" href="#">Khám tai mũi họng</a></li>
-                </ul>
+                <form action="/number/filterbyname" method="post" id="filterForm1">
+                        @csrf
+                <span class="dropdown-icon">
+                    <select name="service_name" class="dropd" id="statusDropdown1">
+                        <option value="" selected>Tất cả</option>
+                        @foreach($services as $service)
+                        <option {!! (request()->input('service_name')) == $service->service_name ? 'selected' : '' !!} value="{{ $service->service_name }}">{{ $service->service_name }}</option>
+                        @endforeach
+                    </select>
+                    <span class="icon_dropd"><i class="fa-solid fa-caret-down"></i></span>
+                </span>
+                </form>
             </div>
 
             <div class="dropdown status-device">
                 <p class="text-status-device">Tình trạng</p>
-                <button class="btn-condition" role="button" id="dropdownMenuCondition" data-bs-toggle="dropdown"
-                    aria-expanded="false"> Tất cả
-                    <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L7 7L13 1" fill="#FF7506" />
-                        <path d="M1 1L7 7L13 1H1Z" stroke="#FF7506" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </button>
-
-                <ul class="dropdown-menu list-name-service" aria-labelledby="dropdownMenuCondition">
-                    <li><a class="dropdown-item active-date-stats item-date-stats" href="#">Tất cả</a>
-                    </li>
-                    <li><a class="dropdown-item item-date-stats" href="#">Đang chờ</a></li>
-                    <li><a class="dropdown-item item-date-stats" href="#">Đã sử dụng</a></li>
-                    <li><a class="dropdown-item item-date-stats" href="#">Bỏ qua</a></li>
-                </ul>
+                <form action="/number/filterbystatus" method="post" id="filterForm2">
+                        @csrf
+                <span class="dropdown-icon">
+                    <select name="status" class="dropd" id="statusDropdown2">
+                        <option value="" selected>Tất cả</option>
+                        <option {!! (request()->input('status')) == 'pending' ? 'selected' : '' !!} value="pending">Đang chờ</option>
+                        <option {!! (request()->input('status')) == 'used' ? 'selected' : '' !!} value="used">Đã sử dụng</option>
+                        <option {!! (request()->input('status')) == 'skipped' ? 'selected' : '' !!} value="skipped">Bỏ qua</option>
+                    </select>
+                    <span class="icon_dropd"><i class="fa-solid fa-caret-down"></i></span>
+                </span>
+                </form>
             </div>
 
             <div class="dropdown status-device">
-                <p class="text-status-device">Nguồn cấp</p>
-                <button class="btn-condition" role="button" id="dropdownMenuFurnish" data-bs-toggle="dropdown"
-                    aria-expanded="false"> Tất cả
-                    <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L7 7L13 1" fill="#FF7506" />
-                        <path d="M1 1L7 7L13 1H1Z" stroke="#FF7506" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </button>
-
-                <ul class="dropdown-menu list-furnish" aria-labelledby="dropdownMenuFurnish">
-                    <li><a class="dropdown-item active-date-stats item-date-stats" href="#">Tất cả</a>
-                    </li>
-                    <li><a class="dropdown-item item-date-stats" href="#">Kiosk</a></li>
-                    <li><a class="dropdown-item item-date-stats" href="#">Hệ thống</a></li>
-                </ul>
-            </div>
+                    <p class="text-status-device">Nguồn cấp</p>
+                    <form action="/number/filterbysource" method="post" id="filterForm3">
+                        @csrf
+                    <span class="dropdown-icon">
+                    <select name="source" class="btn-condition" name="filter_source" id="statusDropdown3">
+                        <option value=" ">Tất cả</option>
+                        <option {!! (request()->input('source')) == 'Kiosk' ? 'selected' : '' !!} value="Kiosk">Kiosk</option>
+                        <option {!! (request()->input('source')) == 'system' ? 'selected' : '' !!} value="system">Hệ thống</option>
+                    </select>
+                </span>
+                    </form>
+                </div>
 
             <div class="area-date">
                 <p class="text-status-device">Chọn thời gian</p>
                 <div class="area-input-date">
-                    <input class="input-date-service" type="date" name="" id="">
+                    <input class="input-date-service" type="date" name="" id="statusDropdown3">
                     <svg width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M4.13346 2.46129L2.9735 1.75776L1.08342 0.611381C0.683023 0.372106 0 0.543527 0 0.886368V3.11126V5.11474C0 5.45758 0.683023 5.629 1.08342 5.38616L4.13346 3.53624C4.62218 3.2434 4.62218 2.75771 4.13346 2.46129Z"
@@ -86,10 +70,15 @@
         </div>
 
         <div class="area-search">
-            <p class="text-status-device">Từ khóa</p>
-            <div class="input-search">
-                <input class="search-menubar-codes" type="text" placeholder="Nhập từ khóa">
-            </div>
+            <form action="/number/search" method="post">
+                @csrf
+                <p style="font-weight: 600; line-height: 40px; margin-left: 10px;">Từ khóa
+                    <span class="dropdown-icon">
+                        <input type="search" class="dropd" name="keyword" placeholder="Nhập từ khóa">
+                        <span class="icon_search"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <button type="submit" id="hidden-button" style="display: none;"></button>
+                    </span>
+            </form>
         </div>
     </div>
 
@@ -113,36 +102,27 @@
                     <td class="text-light" style="color: #ffffff; font-size: 16px;">Tên dịch vụ</td>
                     <td class="border-table" style="color: #ffffff; font-size: 16px;">Thời gian cấp</td>
                     <td class="text-light" style="color: #ffffff; font-size: 16px;">Hạn sử dụng</td>
+                    <td class="border-table" style="color: #ffffff; font-size: 16px;">Trạng thái</td>
                     <td class="border-table" style="color: #ffffff; font-size: 16px;">Nguồn cấp</td>
                     <td class="th-border-right" style="color: #ffffff; font-size: 16px;"></td>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($numbers as $number)
                     <tr class="color-tr-white">
-                        <td>2010001</td>
-                        <td class="border-table">Lê Huỳnh Ái Vân</td>
-                        <td class="border-table">Khám tim mạch</td>
-                        <td class="border-table">14:35 07/11/2021</td>
-                        <td class="border-table">14:35 12/11/2021</td>
+                        <td>{{ $number -> number }}</td>
+                        <td class="border-table">{{ $number -> name }}</td>
+                        <td class="border-table">{{ $number -> service_name }}</td>
+                        <td class="border-table">{{ $number -> issued_at }}</td>
+                        <td class="border-table">{{ $number -> expired_at }}</td>
                         <td>
                             <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="4" cy="4.5" r="4" fill="#4277FF" />
                             </svg> Đang chờ</td>
-                        <td class="border-table"><a href="#">Chi tiết</a></td>
+                        <td class="border-table">{{ $number -> source }}</td>
+                        <td class="border-table"><a href="/number/info/{{$number->id}}">Chi tiết</a></td>
                     </tr>
-
-                    <tr class="color-tr-orange">
-                        <td>2010001</td>
-                        <td class="border-table">Lê Huỳnh Ái Vân</td>
-                        <td class="border-table">Khám tim mạch</td>
-                        <td class="border-table">14:35 07/11/2021</td>
-                        <td class="border-table">14:35 12/11/2021</td>
-                        <td>
-                            <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="4" cy="4.5" r="4" fill="#4277FF" />
-                            </svg> Đang chờ</td>
-                        <td class="border-table"><a href="#">Chi tiết</a></td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
             </div>
@@ -159,25 +139,43 @@
     <!--  -->
 </div>
 
-<div class="phantrang">
-    <ul class="trang">
-        <li>
-            <a href="#" style="font-size: 29px;"><i class="fa-solid fa-caret-left"></i></a>
-        </li>
-        <li class="modautrang"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#">...</a></li>
-        <li><a href="#">10</a></li>
-        <li>
-            <a href="#" style="font-size: 29px;"><i class="fa-solid fa-caret-right"></i></a>
-        </li>
-    </ul>
+<div class="navigation">
+      <ul class="pagination mt-50 mb-70">
+        {{-- Hiển thị nút Previous --}}
+        <li class="page-item"><a class="page-link" href="{{ $numbers->previousPageUrl() }}"><i class="fa-solid fa-caret-left"></i></a></li>
+
+        {{-- Hiển thị các nút số trang --}}
+        @for ($i = 1; $i <= $numbers->lastPage(); $i++)
+          @if ($i >= $numbers->currentPage() - 2 && $i <= $numbers->currentPage() + 2)
+            <li class="page-item {{ ($i == $numbers->currentPage()) ? 'active' : '' }}"><a class="page-link" href="{{ $numbers->url($i) }}">{{ $i }}</a></li>
+          @endif
+        @endfor
+
+        <li class="page-item"><a class="page-link" href="{{ $numbers->nextPageUrl() }}"><i class="fa-solid fa-caret-right"></i></a></li>
+      </ul>
+    </div>
 </div>
 </div>
-</div>
+
+<script>
+    const statusDropdown1 = document.getElementById('statusDropdown1');
+    const statusDropdown2 = document.getElementById('statusDropdown2');
+    const statusDropdown3 = document.getElementById('statusDropdown3');
+
+    statusDropdown1.addEventListener('change', function () {
+        document.getElementById('filterForm1').submit();
+    });
+
+    statusDropdown2.addEventListener('change', function () {
+        document.getElementById('filterForm2').submit();
+    });
+
+    statusDropdown3.addEventListener('change', function () {
+        document.getElementById('filterForm3').submit();
+    });
+
+</script>
 <link rel="stylesheet" href="{{ asset('css/service.css') }}">
 <link rel="stylesheet" href="{{ asset('css/number.css') }}">
+<link rel="stylesheet" href="{{ asset('css/device.css') }}">
 @endsection

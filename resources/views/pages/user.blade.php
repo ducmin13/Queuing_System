@@ -3,7 +3,7 @@
 
 @foreach($info_user as $key => $value)
 <form action="/update-user/{{$value->id}}" method="post">
-	{{ csrf_field() }}
+	@csrf
 	<div class="info">
 	        <div class="container">
 	            <div class="row">

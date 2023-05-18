@@ -234,18 +234,27 @@ h1{
     height: 110px;
 }
 
+.btn-close-popup {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    color: #FF7506;
+}
+
 .text-datetime {
-    width: 335px;
-    height: 33px;
+    width: 400px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 .text-datetime p {
-    font-weight: 700;
-    font-size: 22px;
-    line-height: 33px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
     color: #FFFFFF;
     display: flex;
 }
@@ -254,7 +263,7 @@ h1{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    gap: 5px;
 }
 
 .input-date-service {

@@ -9,18 +9,24 @@
     <div class="row" style="width: 1200px;">
         <div class="col-lg-10">
             <div class="row">
-            <div style="padding-left: 90px;" class="col-lg-4">
-                <p style="font-weight: 600; line-height: 40px;">Trạng thái hoạt động
-                    <span class="dropdown-icon">
-                    <select name="hoatdong" class="dropd">
-                        <option value="" disabled selected>Tất cả</option>
-                        <option value="Hoạt động">Hoạt động</option>
-                        <option value="Ngừng hoạt động">Ngừng hoạt động</option>
-                    </select>
-                    <span class="icon_dropd"><i class="fa-solid fa-caret-down"></i></span>
-                    </span>
-                </p>
-            </div>
+            <div class="col-lg-4">
+                    <form action="/service/filterbystatus" method="post" id="filterForm1">
+                        @csrf
+                        <p style="padding-left: 70px;font-weight: 600; line-height: 40px;">
+                            Trạng thái hoạt động
+                            <span class="dropdown-icon">
+                                <select name="status" class="dropd" id="statusDropdown1">
+                                    <option value="" selected>Tất cả</option>
+                                    <option {!! (request()->input('status')) == 'active' ? 'selected' : '' !!}
+                                        value="active">Hoạt động</option>
+                                    <option {!! (request()->input('status')) == 'inactive' ? 'selected' : '' !!}
+                                        value="inactive">Ngưng hoạt động</option>
+                                </select>
+                                <span class="icon_dropd"><i class="fa-solid fa-caret-down"></i></span>
+                            </span>
+                        </p>
+                    </form>
+                </div>
             <div style=" padding-left: 50px;" class="col-lg-4">
                 <p style="font-weight: 600; margin-bottom: 5px; margin-top: 11px;">Chọn thời gian</p>
                 <p style="display: flex; align-items: center;">
@@ -30,12 +36,16 @@
                 </p>
             </div>
                 <div class="col-lg-4">
-                    <p style="font-weight: 600; line-height: 40px; margin-left: 150px;">Từ khóa
-                        <span class="dropdown-icon">
-                            <input type="search" class="dropd" name="timkiem" placeholder="Nhập từ khóa">
-                            <span class="icon_search"><i class="fa-solid fa-magnifying-glass"></i></span>
-                        </span>
-                    </p>
+                    <form action="/service/search" method="post">
+                        @csrf
+                        <p style="font-weight: 600; line-height: 40px; margin-left: 150px;">Từ khóa
+                            <span class="dropdown-icon">
+                                <input type="search" class="dropd" name="keyword" placeholder="Nhập từ khóa">
+                                <span class="icon_search"><i class="fa-solid fa-magnifying-glass"></i></span>
+                                <button type="submit" id="hidden-button" style="display: none;"></button>
+                            </span>
+                        </p>
+                    </form>
                 </div>
             </div>
         </div>
@@ -66,114 +76,29 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($services as $service)
                     <tr class="color-tr-white">
-                        <td>KIO_01</td>
-                        <td class="border-table">Kiosk</td>
-                        <td>Mô tả dịch vụ 1</td>
+                        <td>{{ $service->service_id }}</td>
+                        <td class="border-table">{{ $service->service_name }}</td>
+                        <td>{{ $service->service_desc }}</td>
                         <td class="border-table">
-                            <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            @if($service->service_status == 'active') 
+                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
-                            </svg> Hoạt động</td>
-                        <td class="border-table"><a href="#">Chi tiết</a></td>
-                        <td><a href="#">Cập nhật</a></td>
+                                </svg>
+                                    Hoạt động
+                            @else
+                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="4" cy="4.5" r="4" fill="#EC3740" />
+                                </svg>
+                                    Ngưng hoạt động
+                            @endif</td>
+                        <td class="border-table"><a href="/service/info/{{ $service->id }}">Chi tiết</a></td>
+                        <td><a href="/service/fupdate/{{ $service->id }}">Cập nhật</a></td>
                     </tr>
-
-                    <tr class="color-tr-or">
-                        <td>KIO_01</td>
-                        <td class="border-table">Kiosk</td>
-                        <td>Hoạt động</td>
-                        <td class="border-table">
-                            <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
-                            </svg> Hoạt động</td>
-                        <td class="border-table"><a href="#">Chi tiết</a></td>
-                        <td><a href="#">Cập nhật</a></td>
-                    </tr>
-
-                    <tr class="color-tr-white">
-                        <td>KIO_01</td>
-                        <td class="border-table">Kiosk</td>
-                        <td>Hoạt động</td>
-                        <td class="border-table">
-                            <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="4" cy="4.5" r="4" fill="#E73F3F" />
-                            </svg> Ngưng hoạt động</td>
-                        <td class="border-table"><a href="#">Chi tiết</a></td>
-                        <td><a href="#">Cập nhật</a></td>
-                    </tr>
-
-                    <tr class="color-tr-or">
-                        <td>KIO_01</td>
-                        <td class="border-table">Kiosk</td>
-                        <td>Hoạt động</td>
-                        <td class="border-table">
-                            <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
-                            </svg> Hoạt động</td>
-                        <td class="border-table"><a href="#">Chi tiết</a></td>
-                        <td><a href="#">Cập nhật</a></td>
-                    </tr>
-
-                    <tr class="color-tr-white">
-                        <td>KIO_01</td>
-                        <td class="border-table">Kiosk</td>
-                        <td>Hoạt động</td>
-                        <td class="border-table">
-                            <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
-                            </svg> Hoạt động</td>
-                        <td class="border-table"><a href="#">Chi tiết</a></td>
-                        <td><a href="#">Cập nhật</a></td>
-                    </tr>
-
-                    <tr class="color-tr-or">
-                        <td>KIO_01</td>
-                        <td class="border-table">Kiosk</td>
-                        <td>Hoạt động</td>
-                        <td class="border-table">
-                            <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
-                            </svg> Hoạt động</td>
-                        <td class="border-table"><a href="#">Chi tiết</a></td>
-                        <td><a href="#">Cập nhật</a></td>
-                    </tr>
-
-                    <tr class="color-tr-white">
-                        <td>KIO_01</td>
-                        <td class="border-table">Kiosk</td>
-                        <td>Hoạt động</td>
-                        <td class="border-table">
-                            <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
-                            </svg> Hoạt động</td>
-                        <td class="border-table"><a href="#">Chi tiết</a></td>
-                        <td><a href="#">Cập nhật</a></td>
-                    </tr>
-
-                    <tr class="color-tr-or">
-                        <td>KIO_01</td>
-                        <td class="border-table">Kiosk</td>
-                        <td>Hoạt động</td>
-                        <td class="border-table">
-                            <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="4" cy="4.5" r="4" fill="#E73F3F" />
-                            </svg> Ngưng hoạt động</td>
-                        <td class="border-table"><a href="#">Chi tiết</a></td>
-                        <td><a href="#">Cập nhật</a></td>
-                    </tr>
-
-                    <tr class="color-tr-white">
-                        <td class="th-border-bottom-left">KIO_01</td>
-                        <td class="border-table">Kiosk</td>
-                        <td>Hoạt động</td>
-                        <td class="border-table">
-                            <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="4" cy="4.5" r="4" fill="#35c75a" />
-                            </svg> Hoạt động</td>
-                        <td class="border-table"><a href="#">Chi tiết</a></td>
-                        <td class="th-border-bottom-right"><a href="#">Cập nhật</a></td>
-                    </tr>
+                    @endforeach
                 </tbody>
+                
             </table>
             </div>
 
@@ -188,24 +113,33 @@
         </div>
     <!--  -->
 
-<div class="phantrang">
-    <ul class="trang">
-        <li>
-            <a href="#" style="font-size: 29px;"><i class="fa-solid fa-caret-left"></i></a>
-        </li>
-        <li class="modautrang"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#">...</a></li>
-        <li><a href="#">10</a></li>
-        <li>
-            <a href="#" style="font-size: 29px;"><i class="fa-solid fa-caret-right"></i></a>
-        </li>
-    </ul>
+        <div class="navigation">
+          <ul class="pagination mt-50 mb-70">
+            {{-- Hiển thị nút Previous --}}
+            <li class="page-item"><a class="page-link" href="{{ $services->previousPageUrl() }}"><i class="fa-solid fa-caret-left"></i></a></li>
+
+            {{-- Hiển thị các nút số trang --}}
+            @for ($i = 1; $i <= $services->lastPage(); $i++)
+              @if ($i >= $services->currentPage() - 2 && $i <= $services->currentPage() + 2)
+                <li class="page-item {{ ($i == $services->currentPage()) ? 'active' : '' }}"><a class="page-link" href="{{ $services->url($i) }}">{{ $i }}</a></li>
+              @endif
+            @endfor
+
+            <li class="page-item"><a class="page-link" href="{{ $services->nextPageUrl() }}"><i class="fa-solid fa-caret-right"></i></a></li>
+          </ul>
+        </div>
+    </div>
 </div>
-</div>
-</div>
+
+<script>
+    const statusDropdown1 = document.getElementById('statusDropdown1');
+
+    statusDropdown1.addEventListener('change', function () {
+        document.getElementById('filterForm1').submit();
+    });
+
+
+</script>
 <link rel="stylesheet" href="{{ asset('css/service.css') }}">
+<link rel="stylesheet" href="{{ asset('css/device.css') }}">
 @endsection

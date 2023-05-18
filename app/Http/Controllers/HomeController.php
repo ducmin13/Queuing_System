@@ -31,20 +31,12 @@ class HomeController extends Controller
         return view('pages.dashboard',compact('info_user'));
     }
 
-   
 
-    public function fnumber()
+    public function report()
     {
         $this->CheckAuth();
         $info_user = DB::table('users')->where('id', Session::get('id'))->get();
-        return view('pages.number',compact('info_user'));
-    }
-
-    public function fnew_number()
-    {
-        $this->CheckAuth();
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
-        return view('pages.add_new_number',compact('info_user'));
+        return view('pages.report',compact('info_user'));
     }
 
 

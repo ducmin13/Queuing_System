@@ -75,42 +75,6 @@ h5{
 
 }
 
-
-.phantrang {
-    display: inline-block;
-    height: 32px;
-    margin-top: 25px;
-    margin-left: 765px;
-}
-.trang {
-    display: flex;
-}
-
-.trang li {
-    width: 32px;
-    height: 32px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.trang li a {
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 19px;
-    color: #848387;
-}
-
-.modautrang {
-    background-color: orangered;
-}
-.modautrang a {
-    color: #ffffff !important;
-    font-weight: 600;
-    font-size: 19px;
-}
-
 .nhap_themthietbi {
     width: 495px;
     height: 45px;
@@ -186,25 +150,25 @@ h5{
     padding-left: 10px;
 }
 
-.phantrang {
+.navigation{
     display: inline-block;
+    color: #FF7506;
     height: 32px;
-    margin-top: 15px;
+    margin-top: 20px;
     margin-left: 1170px;
 }
-.trang {
-    display: flex;
-}
 
-.trang li {
-    width: 32px;
-    height: 32px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #FF7506;
+    border-color: #FF7506;
 }
-
+.page-item:first-child .page-link {
+    margin-left: 0;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
 .trang li a {
     text-decoration: none;
     font-weight: 600;
@@ -212,14 +176,17 @@ h5{
     color: #848387;
 }
 
-.modautrang {
-    background-color: orangered;
+.page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #7E7D88;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
 }
-.modautrang a {
-    color: #ffffff !important;
-    font-weight: 600;
-    font-size: 19px;
-}
+
 
 .button-add-device {
     position: absolute;

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/f8d037ce4a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/user.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
@@ -44,7 +45,7 @@
     </div>
     <ul class="menu-list">
         <li class="menu-item">
-            <a href="dashboard">
+            <a href="/dashboard">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M18.3333 9.08268V3.41602C18.3333 2.16602 17.8 1.66602 16.475 1.66602H13.1083C11.7833 1.66602 11.25 2.16602 11.25 3.41602V9.08268C11.25 10.3327 11.7833 10.8327 13.1083 10.8327H16.475C17.8 10.8327 18.3333 10.3327 18.3333 9.08268Z"
@@ -135,7 +136,7 @@
             </a>
         </li>
         <li class="menu-item">
-            <a href="">
+            <a href="/report">
                 <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="4.57986" cy="14.4016" r="0.708276" fill="#A9A9B0" />
                     <circle cx="6.9407" cy="14.4016" r="0.708276" fill="#A9A9B0" />
@@ -186,15 +187,14 @@
                         d="M9.99984 5.00065C10.4601 5.00065 10.8332 4.62755 10.8332 4.16732C10.8332 3.70708 10.4601 3.33398 9.99984 3.33398C9.5396 3.33398 9.1665 3.70708 9.1665 4.16732C9.1665 4.62755 9.5396 5.00065 9.99984 5.00065Z"
                         fill="#A9A9B0" stroke="#A9A9B0" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-            </a>
-
-            <div>
+                <div>
                 <ul class="submenu">
                     <li><a href="#">Quản lý vai trò</a></li>
                     <li><a href="#">Quản lý tài khoản</a></li>
                     <li><a href="#">Nhật ký người dùng</a></li>
                 </ul>
             </div>
+            </a>
         </li>
     </ul>
     <div class="button-container">

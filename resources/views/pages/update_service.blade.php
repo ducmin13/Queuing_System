@@ -1,17 +1,20 @@
 @extends('welcome')
 @section('content')
 
+
 <main>
 	<div class="title-heading">
             <p>Quản lý dịch vụ</p>
         </div>
     <div class="content-add-service">
         <div class="area-form-add-service">
+        	@foreach($services as $service)
             <p class="infomation-device">Thông tin dịch vụ</p>
-            <form id="form-add-service" action="/service/new-service" method="POST">
+            <form id="form-update-service" action="/service/update/{{ $service -> service_id }}" method="POST">
                 @csrf
                 <div class="form-add-device">
                     <div>
+                    	
                         <div class="item-form-add-device">
                             <label for="service_id">Mã dịch vụ: <svg width="6" height="6" viewBox="0 0 6 6"
                                     fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -21,7 +24,7 @@
                                 </svg>
                                 <div class="alert-danger"></div>
                             </label>
-                            <input name="service_id" type="text" placeholder="Nhập mã thiết bị" value="">
+                            <input name="service_id" type="text" placeholder="Nhập mã thiết bị" value="{{ $service -> service_id }}">
                         </div>
                         <div class="item-form-add-device">
                             <label for="service_name">Tên dịch vụ: <svg width="6" height="6" viewBox="0 0 6 6"
@@ -33,7 +36,7 @@
                                 <div class="alert-danger"></div>
                             </label>
                             <input name="service_name" type="text" placeholder="Nhập tên dịch vụ"
-                                value="">
+                                value="{{ $service -> service_name }}">
                         </div>
                     </div>
 
@@ -43,59 +46,62 @@
                                 <div class="alert-danger"></div>
                             </label>
                             <textarea class="textarea-describe" name="service_desc" id="description"
-                                placeholder="Mô tả dịch vụ"></textarea>
+                                placeholder="Mô tả dịch vụ">{{ $service -> service_desc }}</textarea>
                         </div>
                     </div>
                 </div>
 
                 <div class="area-number-level-rules">
-                    <p class="heading-number-level-rules">Quy tắc cấp số</p>
-                    <div class="alert-danger"></div>
-                    <div class="items-checkbox-service">
-                        <div class="left-checkbox-service">
-                            <input class="checkbox-service" type="checkbox" name="auto_increment" value="1" id="auto_increment">
-                            <p>Tăng tự động từ:</p>
-                        </div>
+				    <p class="heading-number-level-rules">Quy tắc cấp số</p>
+				    <div class="alert-danger"></div>
+				    <div class="items-checkbox-service">
+				        <div class="left-checkbox-service">
+				            <input class="checkbox-service" type="checkbox" name="auto_increment" value="1" id="auto_increment"
+				                @if(isset($service->auto_increment) && $service->auto_increment == 1) checked @endif>
+				            <p>Tăng tự động từ:</p>
+				        </div>
 
-                        <div class="right-checkbox-service">
-                            <input type="text" placeholder="0001" disabled>
-                            <p>đến</p>
-                            <input type="text" placeholder="9999" disabled>
-                        </div>
-                    </div>
+				        <div class="right-checkbox-service">
+				            <input type="text" placeholder="0001" disabled>
+				            <p>đến</p>
+				            <input type="text" placeholder="9999" disabled>
+				        </div>
+				    </div>
 
-                    <div class="items-checkbox-service">
-                        <div class="left-checkbox-service">
-                            <input class="checkbox-service" type="checkbox" name="prefix" value="1" id="prefix">
-                            <p>Prelix: </p>
-                        </div>
+				    <div class="items-checkbox-service">
+				        <div class="left-checkbox-service">
+				            <input class="checkbox-service" type="checkbox" name="prefix" value="1" id="prefix"
+				                @if(isset($service->prefix) && $service->prefix == 1) checked @endif>
+				            <p>Prelix: </p>
+				        </div>
 
-                        <div class="right-checkbox-service">
-                            <input type="text" placeholder="0001" disabled>
-                        </div>
-                    </div>
+				        <div class="right-checkbox-service">
+				            <input type="text" placeholder="0001" disabled>
+				        </div>
+				    </div>
 
-                    <div class="items-checkbox-service">
-                        <div class="left-checkbox-service">
-                            <input class="checkbox-service" type="checkbox" name="surfix" value="1" id="surfix">
-                            <p>Surfix: </p>
-                        </div>
+				    <div class="items-checkbox-service">
+				        <div class="left-checkbox-service">
+				            <input class="checkbox-service" type="checkbox" name="surfix" value="1" id="surfix"
+				                @if(isset($service->surfix) && $service->surfix == 1) checked @endif>
+				            <p>Surfix: </p>
+				        </div>
 
-                        <div class="right-checkbox-service">
-                            <input type="text" placeholder="0001" disabled>
-                        </div>
-                    </div>
+				        <div class="right-checkbox-service">
+				            <input type="text" placeholder="0001" disabled>
+				        </div>
+				    </div>
 
-                    <div class="items-checkbox-service">
-                        <div class="left-checkbox-service">
-                            <input class="checkbox-service" type="checkbox" name="reset_daily" value="1">
-                            <p>Reset mỗi ngày</p>
-                        </div>
-                    </div>
-                </div>
+				    <div class="items-checkbox-service">
+				        <div class="left-checkbox-service">
+				            <input class="checkbox-service" type="checkbox" name="reset_daily" value="1"
+				                @if(isset($service->reset_daily) && $service->reset_daily == 1) checked @endif>
+				            <p>Reset mỗi ngày</p>
+				        </div>
+				    </div>
+				</div>
 
-
-
+                @endforeach
                 <span class="note-form-add-device"><svg width="6" height="6" viewBox="0 0 6 6" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -109,10 +115,11 @@
             <a href="/service">
                 <button class="btn-add-device-abort" type="button">Hủy bỏ</button>
             </a>
-            <button form="form-add-service" class="btn-add-device-add" type="submit">Thêm dịch vụ</button>
+            <button form="form-update-service" class="btn-add-device-add" type="submit">Cập nhật</button>
         </div>
     </div>
 </main>
+
 <link rel="stylesheet" href="{{ asset('css/service.css') }}">
 <link rel="stylesheet" href="{{ asset('css/device.css') }}">
 @endsection

@@ -26,7 +26,7 @@ class DeviceController extends Controller
     {
         $this->CheckAuth();
         $info_user = DB::table('users')->where('id', Session::get('id'))->get();
-        $devices = DB::table('tbl_device')->get();
+        $devices = DB::table('tbl_device')->paginate(8);
 
         return view('pages.device',compact('info_user','devices'));
     }
@@ -43,15 +43,11 @@ class DeviceController extends Controller
         $this->CheckAuth();
         $info_user = DB::table('users')->where('id', Session::get('id'))->get();
 
-        // Lấy thông tin của thiết bị từ cơ sở dữ liệu
         $device = DB::table('tbl_device')->where('id', $id)->get();
 
-        // Kiểm tra xem thiết bị có tồn tại hay không
         if ($device) {
-            // Truyền thông tin của thiết bị vào view thông qua biến compact
             return view('pages.info_device', compact('info_user', 'device'));
         } else {
-            // Xử lý khi không tìm thấy thiết bị
             return redirect()->route('device')->with('error', 'Không tìm thấy thông tin thiết bị');
         }
     }
@@ -69,6 +65,7 @@ class DeviceController extends Controller
     {
         $this->CheckAuth();
         $request->validate([
+            'device_id' => 'required',
             'device_name' => 'required',
             'username' => 'required',
             'device_type' => 'required',
@@ -80,6 +77,7 @@ class DeviceController extends Controller
         $affected = DB::table('tbl_device')
             ->where('id', $id)
             ->update([
+                'device_id' => $request->device_id,
                 'device_name' => $request->device_name,
                 'username' => $request->username,
                 'device_type' => $request->device_type,
@@ -87,9 +85,8 @@ class DeviceController extends Controller
                 'service' => $request->service,
                 'password' => $request->password
             ]);
-        $affected->save();
         if ($affected) {
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Cập nhật thiết bị thành công!');
         }
 
         return redirect()->back()->with('error', 'Không tìm thấy thiết bị !');
@@ -117,6 +114,54 @@ class DeviceController extends Controller
             'password' => $request->password
         ]);
         return Redirect::to('/device')->with('success', 'Thêm thiết bị thành công!');
+    }
+
+    public function search(Request $request)
+    {
+        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
+        $keyword = $request->keyword;
+        $devices = DB::table('tbl_device')
+            ->where('device_name', 'like', '%'.$keyword.'%')
+            ->orWhere('device_id', 'like', '%'.$keyword.'%')
+            ->orWhere('username', 'like', '%'.$keyword.'%')
+            ->orWhere('device_type', 'like', '%'.$keyword.'%')
+            ->orWhere('ip_address', 'like', '%'.$keyword.'%')
+            ->orWhere('service', 'like', '%'.$keyword.'%')
+            ->paginate(8);
+
+        return view('pages.device',compact('info_user','devices'));
+
+    }
+
+
+    public function filterbystatus(Request $request)
+    {
+        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
+
+        $status = $request->input('status');
+
+        $devices = DB::table('tbl_device')
+        ->when($status, function ($query, $status) {
+            return $query->where('device_status', $status);
+        })
+        ->paginate(9);
+        return view('pages.device',compact('info_user','devices'));
+
+    }
+
+    public function filterbyconnect(Request $request)
+    {
+        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
+
+        $connect = $request->input('connect');
+
+        $devices = DB::table('tbl_device')
+        ->when($connect, function ($query, $connect) {
+            return $query->where('device_connect', $connect);
+        })
+        ->paginate(9);
+        return view('pages.device',compact('info_user','devices'));
+
     }
 
 

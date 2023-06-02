@@ -25,35 +25,27 @@ class ServiceController extends Controller
 
     public function finsert_service()
     {
-        $this->CheckAuth();
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
-        return view('pages.insert_service',compact('info_user'));
+        return view('pages.insert_service');
     }
 
     public function fupdate_service($id)
     {
-        $this->CheckAuth();
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
         $services = DB::table('tbl_service')->where('id', $id)->get();
-        return view('pages.update_service',compact('info_user','services'));
+        return view('pages.update_service',compact('services'));
     }
 
     public function service()
     {
-        $this->CheckAuth();
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
         $services = DB::table('tbl_service')->paginate(8);
-        return view('pages.service',compact('info_user','services'));
+        return view('pages.service',compact('services'));
     }
 
     public function info_service($id)
     {
-        $this->CheckAuth();
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
         $services = DB::table('tbl_service')->where('id', $id)->get();
 
         if ($services) {
-            return view('pages.info_service', compact('info_user', 'services'));
+            return view('pages.info_service', compact('services'));
         } else {
             return redirect()->route('service')->with('error', 'Không tìm thấy thông tin thiết bị');
         }
@@ -108,7 +100,6 @@ class ServiceController extends Controller
 
     public function search(Request $request)
     {
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
         $keyword = $request->keyword;
         $services = DB::table('tbl_service')
             ->where('service_name', 'like', '%'.$keyword.'%')
@@ -116,14 +107,12 @@ class ServiceController extends Controller
             ->orWhere('service_desc', 'like', '%'.$keyword.'%')
             ->paginate(8);
 
-        return view('pages.service',compact('info_user','services'));
+        return view('pages.service',compact('services'));
 
     }
 
     public function filterbystatus(Request $request)
     {
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
-
         $status = $request->input('status');
 
         $services = DB::table('tbl_service')
@@ -131,7 +120,7 @@ class ServiceController extends Controller
             return $query->where('service_status', $status);
         })
         ->paginate(9);
-        return view('pages.service',compact('info_user','services'));
+        return view('pages.service',compact('services'));
 
     }
 

@@ -116,9 +116,19 @@
                         <td class="border-table">{{ $number -> issued_at }}</td>
                         <td class="border-table">{{ $number -> expired_at }}</td>
                         <td>
-                            <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            @if($number -> status == 'pending')
+                            <svg class="me-1" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="4" cy="4.5" r="4" fill="#4277FF" />
-                            </svg> Đang chờ</td>
+                            </svg> Đang chờ
+                            @elseif ($number -> status == 'used')
+                            <svg class="me-1" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="4" cy="4.5" r="4" fill="#7E7D88" />
+                            </svg> Đã sử dụng
+                            @else
+                            <svg class="me-1" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="4" cy="4.5" r="4" fill="#E73F3F" />
+                            </svg> Bỏ qua
+                            @endif
                         <td class="border-table">{{ $number -> source }}</td>
                         <td class="border-table"><a href="/number/info/{{$number->id}}">Chi tiết</a></td>
                     </tr>

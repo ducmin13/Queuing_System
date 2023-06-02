@@ -30,9 +30,13 @@
                 </li>
                 <li class="nav-item">
                     <div class="hello">Xin chào</div>
-                    @foreach($info_user as $key => $value)
-                    <div class="name">{{ $value->fullname }}</div>
-                    @endforeach
+                    
+                        <div class="name">
+                            <?php 
+                                $name = session('name');
+                                echo $name;
+                            ?>
+                        </div>
                 </li>
 
             </ul>
@@ -176,6 +180,7 @@
                         fill="#292D32" stroke="#A9A9B0" />
                 </svg>
                 <p>Cài đặt hệ thống</p>
+                </a>
                 <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M9.99984 16.6667C10.4601 16.6667 10.8332 16.2936 10.8332 15.8333C10.8332 15.3731 10.4601 15 9.99984 15C9.5396 15 9.1665 15.3731 9.1665 15.8333C9.1665 16.2936 9.5396 16.6667 9.99984 16.6667Z"
@@ -187,16 +192,15 @@
                         d="M9.99984 5.00065C10.4601 5.00065 10.8332 4.62755 10.8332 4.16732C10.8332 3.70708 10.4601 3.33398 9.99984 3.33398C9.5396 3.33398 9.1665 3.70708 9.1665 4.16732C9.1665 4.62755 9.5396 5.00065 9.99984 5.00065Z"
                         fill="#A9A9B0" stroke="#A9A9B0" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-                <div>
                 <ul class="submenu">
-                    <li><a href="#">Quản lý vai trò</a></li>
-                    <li><a href="#">Quản lý tài khoản</a></li>
-                    <li><a href="#">Nhật ký người dùng</a></li>
+                    <li><a href="/role">Quản lý vai trò</a></li>
+                    <li><a href="/account">Quản lý tài khoản</a></li>
+                    <li><a href="/log">Nhật ký người dùng</a></li>
                 </ul>
-            </div>
-            </a>
         </li>
     </ul>
+
+
     <div class="button-container">
         <a href="logout"><button type="submit" class="button">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

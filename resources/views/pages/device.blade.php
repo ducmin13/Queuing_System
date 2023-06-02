@@ -1,7 +1,7 @@
 @extends('welcome')
 @section('content')
 
-<link rel="stylesheet" href="{{ asset('css/device.css') }}">
+
  <div class="container mt-4" >
     <div class="mt-3">
         <h5>Danh sách thiết bị</h5>
@@ -165,4 +165,6 @@
     });
 
 </script>
+<link rel="stylesheet" href="{{ asset('css/device.css') }}">
+
 @endsection

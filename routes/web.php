@@ -19,7 +19,6 @@ Route::get('/info-device', 'App\Http\Controllers\HomeController@finfo_device');
 Route::get('/update-device', 'App\Http\Controllers\HomeController@fupdate_device');
 Route::get('/user', 'App\Http\Controllers\HomeController@user');
 
-Route::get('/report', 'App\Http\Controllers\HomeController@report');
 
 //user
 Route::post('/update-user/{id}','App\Http\Controllers\HomeController@update_user');
@@ -56,8 +55,23 @@ Route::get('/number', 'App\Http\Controllers\NumberController@fnumber');
 Route::get('/add-new-number', 'App\Http\Controllers\NumberController@fnew_number');
 Route::post('/new-number', 'App\Http\Controllers\NumberController@new_number');
 Route::post('/number/search','App\Http\Controllers\NumberController@search');
-Route::post('/number/filterbyname','App\Http\Controllers\NumberController@filterbystatus');
+Route::post('/number/filterbyname','App\Http\Controllers\NumberController@filterbyname');
 Route::post('/number/filterbystatus','App\Http\Controllers\NumberController@filterbystatus');
 Route::post('/number/filterbysource','App\Http\Controllers\NumberController@filterbysource');
 Route::get('/number/info/{id}','App\Http\Controllers\NumberController@info_number');
+
+
+//report
+Route::get('/report', 'App\Http\Controllers\ReportController@report');
+Route::post('/report/filterbyname','App\Http\Controllers\ReportController@filterbyname');
+Route::post('/report/filterbystatus','App\Http\Controllers\ReportController@filterbystatus');
+Route::post('/report/filterbyday','App\Http\Controllers\ReportController@filterbyday');
+
+//role
+Route::get('/role', 'App\Http\Controllers\RoleController@role');
+Route::get('/frole', 'App\Http\Controllers\RoleController@frole');
+Route::post('/role/add-role', 'App\Http\Controllers\RoleController@add_role');
+
+//account
+Route::get('/account', 'App\Http\Controllers\AccountController@account');
 

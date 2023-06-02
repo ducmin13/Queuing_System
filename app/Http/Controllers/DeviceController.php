@@ -13,40 +13,25 @@ session_start();
 
 class DeviceController extends Controller
 {
-    public function CheckAuth()
-    {
-        if (Session::has('id')) {
-            return redirect('/dashboard');
-        } else {
-            return redirect('/flogin');
-        }
-    }
 
      public function device()
     {
-        $this->CheckAuth();
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
         $devices = DB::table('tbl_device')->paginate(8);
 
-        return view('pages.device',compact('info_user','devices'));
+        return view('pages.device',compact('devices'));
     }
 
      public function finsert_device()
     {
-        $this->CheckAuth();
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
-        return view('pages.insert_device',compact('info_user'));
+        return view('pages.insert_device');
     }
 
     public function info_device($id)
     {
-        $this->CheckAuth();
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
-
         $device = DB::table('tbl_device')->where('id', $id)->get();
 
         if ($device) {
-            return view('pages.info_device', compact('info_user', 'device'));
+            return view('pages.info_device', compact('device'));
         } else {
             return redirect()->route('device')->with('error', 'Không tìm thấy thông tin thiết bị');
         }
@@ -55,15 +40,12 @@ class DeviceController extends Controller
 
     public function fupdate_device($id)
     {
-        $this->CheckAuth();
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
         $device = DB::table('tbl_device')->where('id', $id)->get();
-        return view('pages.update_device',compact('info_user','device'));
+        return view('pages.update_device',compact('device'));
     }
 
     public function update_device(Request $request, $id)
     {
-        $this->CheckAuth();
         $request->validate([
             'device_id' => 'required',
             'device_name' => 'required',
@@ -118,7 +100,6 @@ class DeviceController extends Controller
 
     public function search(Request $request)
     {
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
         $keyword = $request->keyword;
         $devices = DB::table('tbl_device')
             ->where('device_name', 'like', '%'.$keyword.'%')
@@ -129,15 +110,13 @@ class DeviceController extends Controller
             ->orWhere('service', 'like', '%'.$keyword.'%')
             ->paginate(8);
 
-        return view('pages.device',compact('info_user','devices'));
+        return view('pages.device',compact('devices'));
 
     }
 
 
     public function filterbystatus(Request $request)
     {
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
-
         $status = $request->input('status');
 
         $devices = DB::table('tbl_device')
@@ -145,14 +124,12 @@ class DeviceController extends Controller
             return $query->where('device_status', $status);
         })
         ->paginate(9);
-        return view('pages.device',compact('info_user','devices'));
+        return view('pages.device',compact('devices'));
 
     }
 
     public function filterbyconnect(Request $request)
     {
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
-
         $connect = $request->input('connect');
 
         $devices = DB::table('tbl_device')
@@ -160,7 +137,7 @@ class DeviceController extends Controller
             return $query->where('device_connect', $connect);
         })
         ->paginate(9);
-        return view('pages.device',compact('info_user','devices'));
+        return view('pages.device',compact('devices'));
 
     }
 

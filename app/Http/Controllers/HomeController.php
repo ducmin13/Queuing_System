@@ -26,23 +26,15 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        $this->CheckAuth();
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
-        return view('pages.dashboard',compact('info_user'));
+        return view('pages.dashboard');
     }
 
 
-    public function report()
-    {
-        $this->CheckAuth();
-        $info_user = DB::table('users')->where('id', Session::get('id'))->get();
-        return view('pages.report',compact('info_user'));
-    }
+    
 
 
     public function user()
     {
-        $this->CheckAuth();
         $info_user = DB::table('users')->where('id', Session::get('id'))->get();
         return view('pages.user',compact('info_user'));
     }

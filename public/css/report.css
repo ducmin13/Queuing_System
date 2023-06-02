@@ -1,0 +1,89 @@
+.area-input-date {
+    padding-left: 500px;
+    width: 320px;
+}
+
+.thead-table-report {
+    padding-left: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    position: relative;
+}
+
+.thead-table-report button {
+    border: none;
+    background-color: transparent;
+
+}
+
+.th-table-report {
+    min-width: 226px;
+}
+
+.dropdown-menu.list-table-codeservice {
+    position: absolute;
+    top: 10px !important;
+    left: 18px !important;
+    width: 226px;
+    height: 200px;
+    overflow-y: auto;
+    border-radius: 8px;
+}
+
+.items-checkbox-dropdown-report {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    height: 44px;
+}
+
+.items-checkbox-dropdown-report p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #282739;
+}
+
+.items-checkbox-dropdown-report input {
+    width: 20px;
+    height: 20px;
+}
+
+
+.bx-search-alt {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    color: #fff;
+}
+.bx-search-alt:hover {
+    color: #454545;
+    transition: 0.5s;
+}
+.btn-filter-search {
+    position: absolute;
+    right: 0;
+    margin-right: -17px;
+    margin-top: 4px;
+}
+
+
+.dropdown-menu .dropdown-item.active-date-stats {
+  float: left;
+  margin-right: 10px; /* Điều chỉnh khoảng cách giữa tiêu đề và biểu tượng dropdown */
+}
+
+.dropdown-menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.dropdown-item.active-date-stats {
+  margin-right: 10px; /* Điều chỉnh khoảng cách giữa tiêu đề và biểu tượng dropdown */
+}

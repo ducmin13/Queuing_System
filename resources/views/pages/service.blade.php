@@ -10,22 +10,22 @@
         <div class="col-lg-10">
             <div class="row">
             <div class="col-lg-4">
-                    <form action="/service/filterbystatus" method="post" id="filterForm1">
-                        @csrf
-                        <p style="padding-left: 70px;font-weight: 600; line-height: 40px;">
-                            Trạng thái hoạt động
-                            <span class="dropdown-icon">
-                                <select name="status" class="dropd" id="statusDropdown1">
-                                    <option value="" selected>Tất cả</option>
-                                    <option {!! (request()->input('status')) == 'active' ? 'selected' : '' !!}
-                                        value="active">Hoạt động</option>
-                                    <option {!! (request()->input('status')) == 'inactive' ? 'selected' : '' !!}
-                                        value="inactive">Ngưng hoạt động</option>
-                                </select>
-                                <span class="icon_dropd"><i class="fa-solid fa-caret-down"></i></span>
-                            </span>
-                        </p>
-                    </form>
+                <form action="/service/filterbystatus" method="post" id="filterForm1">
+                    @csrf
+                    <p style="padding-left: 70px;font-weight: 600; line-height: 40px;">
+                        Trạng thái hoạt động
+                        <span class="dropdown-icon">
+                            <select name="status" class="dropd" id="statusDropdown1">
+                                <option value="" selected>Tất cả</option>
+                                <option {!! (request()->input('status')) == 'active' ? 'selected' : '' !!}
+                                    value="active">Hoạt động</option>
+                                <option {!! (request()->input('status')) == 'inactive' ? 'selected' : '' !!}
+                                    value="inactive">Ngưng hoạt động</option>
+                            </select>
+                            <span class="icon_dropd"><i class="fa-solid fa-caret-down"></i></span>
+                        </span>
+                    </p>
+                </form>
                 </div>
             <div style=" padding-left: 50px;" class="col-lg-4">
                 <p style="font-weight: 600; margin-bottom: 5px; margin-top: 11px;">Chọn thời gian</p>

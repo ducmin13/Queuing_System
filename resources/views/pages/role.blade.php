@@ -8,7 +8,7 @@
     <div style="padding-left: 1160px;" class="menubar-device">
 	    <div class="area-search">
 	    	<p style="font-weight: 600; line-height: 40px; margin-left: 10px;">Từ khóa
-	            <form action="/number/search" method="post">
+	            <form action="/role/search" method="post">
 	                @csrf
 	                    <span class="dropdown-icon">
 	                        <input type="search" class="dropd" name="keyword" placeholder="Nhập từ khóa">
@@ -40,13 +40,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($role as $value)
                     <tr class="color-tr-white">
-                        <td>Tên vai trò</td>
-                        <td class="border-table">Số người dùng</td>
-                        <td class="border-table">Mô tả</td>
-                        <td class="border-table"><a href="/role/update/">Cập nhật</a></td>
+                        <td>{{ $value -> name }}</td>
+                        <td class="border-table">{{ $value -> quantity }}</td>
+                        <td class="border-table">{{ $value -> desc }}</td>
+                        <td class="border-table"><a href="/role/fupdate/">Cập nhật</a></td>
                     </tr>
-
+                    @endforeach
                 </tbody>
             </table>
             </div>
@@ -54,18 +55,18 @@
     <!--  -->
 
 
-{{-- <div class="navigation">
+<div class="navigation">
       <ul class="pagination mt-50 mb-70">
-        <li class="page-item"><a class="page-link" href="{{ $numbers->previousPageUrl() }}"><i class="fa-solid fa-caret-left"></i></a></li>
-        @for ($i = 1; $i <= $numbers->lastPage(); $i++)
-          @if ($i >= $numbers->currentPage() - 2 && $i <= $numbers->currentPage() + 2)
-            <li class="page-item {{ ($i == $numbers->currentPage()) ? 'active' : '' }}"><a class="page-link" href="{{ $numbers->url($i) }}">{{ $i }}</a></li>
+        <li class="page-item"><a class="page-link" href="{{ $role->previousPageUrl() }}"><i class="fa-solid fa-caret-left"></i></a></li>
+        @for ($i = 1; $i <= $role->lastPage(); $i++)
+          @if ($i >= $role->currentPage() - 2 && $i <= $role->currentPage() + 2)
+            <li class="page-item {{ ($i == $role->currentPage()) ? 'active' : '' }}"><a class="page-link" href="{{ $role->url($i) }}">{{ $i }}</a></li>
           @endif
         @endfor
 
-        <li class="page-item"><a class="page-link" href="{{ $numbers->nextPageUrl() }}"><i class="fa-solid fa-caret-right"></i></a></li>
+        <li class="page-item"><a class="page-link" href="{{ $role->nextPageUrl() }}"><i class="fa-solid fa-caret-right"></i></a></li>
       </ul>
-    </div> --}}
+    </div>
 
 </div>
 

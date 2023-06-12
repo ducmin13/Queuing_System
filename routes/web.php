@@ -74,4 +74,6 @@ Route::post('/role/add-role', 'App\Http\Controllers\RoleController@add_role');
 
 //account
 Route::get('/account', 'App\Http\Controllers\AccountController@account');
+Route::get('/account/fnew', 'App\Http\Controllers\AccountController@fnew_account');
+Route::post('/account/new', 'App\Http\Controllers\AccountController@new_account');
 

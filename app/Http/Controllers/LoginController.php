@@ -28,26 +28,6 @@ class LoginController extends Controller
         return view('pages.fforgot');
     }
 
-    
-
-    public function register(Request $request){
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6',
-        ]);
-
-        // Create a new user in the database
-        $user = new User;
-        $user->name = $request->input('name');
-        $user->fullname = $request->input('fullname');
-        $user->email = $request->input('email');
-        $user->password = bcrypt($request->input('password'));
-        $user->save();
-        $request->session()->put('id', $user->id);
-        return Redirect('flogin');
-    }
-
     public function login(Request $request)
     {
         $name = $request->input('name');
@@ -63,8 +43,7 @@ class LoginController extends Controller
             auth()->login($user);
             $request->session()->put('id', $user->id);
             $request->session()->put('name', $user->fullname);
-            $info_user = DB::table('users')->where('id', Session::get('id'))->get();
-            return view('pages.dashboard', compact('info_user'));
+            return redirect('/dashboard');
         } else {
             Session::put('message', 'Sai mật khẩu hoặc tên đăng nhập');
             return redirect('flogin');

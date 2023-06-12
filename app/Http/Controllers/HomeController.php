@@ -26,12 +26,18 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        return view('pages.dashboard');
+        $number = DB::table('tbl_number')->count();
+        $used = DB::table('tbl_number')->where('status', 'used')->count();
+        $pending = DB::table('tbl_number')->where('status', 'pending')->count();
+        $skipped = DB::table('tbl_number')->where('status', 'skipped')->count();
+        $device = DB::table('tbl_device')->count();
+        $device1 = DB::table('tbl_device')->where('device_status', 'active')->count();
+        $device2 = $device- $device1;
+        $service = DB::table('tbl_service')->count();
+        $service1 = DB::table('tbl_service')->where('service_status', 'active')->count();
+        $service2 = $service- $service1;
+        return view('pages.dashboard',compact('number','used','pending','skipped','device','device1','device2','service','service1','service2'));
     }
-
-
-    
-
 
     public function user()
     {

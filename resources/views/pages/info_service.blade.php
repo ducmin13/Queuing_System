@@ -168,58 +168,50 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach( $numbers as $number)
                         <tr class="color-tr-white">
                             <td class="border-info-service">
-                                2010001
+                                {{ $number -> number }}
                             </td>
                             <td>
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="4" cy="4.70703" r="4" fill="#34CD26" />
-                                </svg>
-                                Đã hoàn thành
+                                 @if($number -> status == 'pending')
+                                <svg class="me-1" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="4" cy="4.5" r="4" fill="#4277FF" />
+                                </svg> Đang chờ
+                                @elseif ($number -> status == 'used')
+                                <svg class="me-1" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="4" cy="4.5" r="4" fill="#7E7D88" />
+                                </svg> Đã sử dụng
+                                @else
+                                <svg class="me-1" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="4" cy="4.5" r="4" fill="#E73F3F" />
+                                </svg> Bỏ qua
+                                @endif
                             </td>
                         </tr>
-
+                        @endforeach
 
                     </tbody>
                 </table>
+
             </div>
 
-            {{-- <div class="area-pagination-page">
-                <ul class="pagination-page">
-                    <li>
-                        <a href="#"><svg width="8" height="12" viewBox="0 0 8 12" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7 1L1 6L7 11" fill="#A9A9B0" />
-                                <path d="M7 1L1 6L7 11L7 1Z" stroke="#A9A9B0" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="active-pagina-page"><a href="">1</a></li>
-                    <li><a href="">2</a></li>
-                    <li><a href="">3</a></li>
-                    <li><a href="">4</a></li>
-                    <li><a href="">5</a></li>
-                    <li><a href="">...</a></li>
-                    <li><a href="">10</a></li>
-                    <li>
-                        <a href="#"><svg width="8" height="12" viewBox="0 0 8 12" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 11L7 6L1 1" fill="#7E7D88" />
-                                <path d="M1 11L7 6L1 1L1 11Z" stroke="#7E7D88" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-
-                        </a>
-                    </li>
-                </ul>
-
-            </div> --}}
         </div>
     </div>
+    <div class="navigation">
+      <ul class="pagination mt-50 mb-70">
+        <li class="page-item"><a class="page-link" href="{{ $numbers->previousPageUrl() }}"><i class="fa-solid fa-caret-left"></i></a></li>
+        @for ($i = 1; $i <= $numbers->lastPage(); $i++)
+          @if ($i >= $numbers->currentPage() - 2 && $i <= $numbers->currentPage() + 2)
+            <li class="page-item {{ ($i == $numbers->currentPage()) ? 'active' : '' }}"><a class="page-link" href="{{ $numbers->url($i) }}">{{ $i }}</a></li>
+          @endif
+        @endfor
+
+        <li class="page-item"><a class="page-link" href="{{ $numbers->nextPageUrl() }}"><i class="fa-solid fa-caret-right"></i></a></li>
+      </ul>
+    </div>
 </div>
+
 <link rel="stylesheet" href="{{ asset('css/service.css') }}">
 <link rel="stylesheet" href="{{ asset('css/device.css') }}">
 @endsection

@@ -14,14 +14,6 @@ session_start();
 
 class ServiceController extends Controller
 {
-    public function CheckAuth()
-    {
-        if (Session::has('id')) {
-            return redirect('/dashboard');
-        } else {
-            return redirect('/flogin');
-        }
-    }
 
     public function finsert_service()
     {
@@ -43,11 +35,13 @@ class ServiceController extends Controller
     public function info_service($id)
     {
         $services = DB::table('tbl_service')->where('id', $id)->get();
-
+        $service = DB::table('tbl_service')->where('id', $id)->first();
         if ($services) {
-            return view('pages.info_service', compact('services'));
+            $numbers = DB::table('tbl_number')->where('service_name', $service->service_name)->paginate(10);
+            
+            return view('pages.info_service', compact('services', 'numbers'));
         } else {
-            return redirect()->route('service')->with('error', 'Không tìm thấy thông tin thiết bị');
+            return redirect()->route('service')->with('error', 'Không tìm thấy thông tin dịch vụ');
         }
     }
 
